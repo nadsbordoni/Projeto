@@ -1,7 +1,7 @@
 import java.util.*;
 public abstract class Pessoa {
 	private String nome;
-	private String documento;
+	private String documento;// diferença entre eles 
 	private String zipcode; // endereço 
 	private String telefone;
 
