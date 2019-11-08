@@ -2,6 +2,7 @@ public class Reserva {
 	private int hora;
 	private int dia;
 	private int mes;
+	private int ano; 
 
 	Reserva (int hora, int dia, int mes) {
 		this.hora = hora;
@@ -9,7 +10,6 @@ public class Reserva {
 		this.mes = mes;
 		
 	} 
-	//teste
 	
 	public int getHora() {
 		return this.hora;
@@ -23,6 +23,9 @@ public class Reserva {
 		return this.mes;
 	}
 	
+	public int getAno() {
+		return this.ano;
+	}
 	public void setHora() {
 		this.hora = hora;
 	}
@@ -33,6 +36,10 @@ public class Reserva {
 	
 	public void setMes() {
 		this.mes = mes;
+	}
+	
+	public void setAno() {
+		this.ano = ano;
 	}
 	
 	}
