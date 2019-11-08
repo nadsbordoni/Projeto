@@ -42,5 +42,6 @@ public abstract class Pessoa {
 	
 	public void setTelefone() {
 		this.telefone = telefone;
+		// oi tudo bem 
 	}
 	}
