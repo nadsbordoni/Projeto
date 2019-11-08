@@ -1,47 +1,52 @@
-import java.util.*;
+
 public abstract class Pessoa {
 	private String nome;
-	private String documento;// diferença entre eles 
-	private String zipcode; // endereço 
+	
+	private String zipcode; // endereço
 	private String telefone;
 
-	Pessoa (String nome, String documento, String zipcode, String telefone) {
+	Pessoa(String nome, String zipcode, String telefone, String documento) {
 		this.nome = nome;
-		this.documento = documento;
 		this.zipcode = zipcode;
 		this.telefone = telefone;
 	}
-	
+
 	public String getNome() {
 		return this.nome;
-	}
-	
-	public String getDocumento() {
-		return this.documento;
 	}
 	
 	public String getZipcode() {
 		return this.zipcode;
 	}
-	
+
 	public String getTelefone() {
 		return this.telefone;
 	}
-	
-	public void setNome() {
+	public String getDocumento() {
+		return null;
+	}
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	
-	public void setDocumento() {
-		this.documento = documento;
-	}
-	
-	public void setZipcode() {
+
+	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
-	
-	public void setTelefone() {
+
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-		// oi tudo bem 
+
 	}
+
+	public boolean equals(PessoaFisica pessoa) {
+		return false;
 	}
+
+	public boolean equals(PessoaJuridica pessoa) {
+		return false;
+	}
+	
+
+
+}
