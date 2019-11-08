@@ -7,7 +7,9 @@ public class Reserva {
 		this.hora = hora;
 		this.dia = dia;
 		this.mes = mes;
-	}
+		
+	} 
+	//teste
 	
 	public int getHora() {
 		return this.hora;
