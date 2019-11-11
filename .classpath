@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="Classesbasicas"/>
 	<classpathentry kind="src" path="interface"/>
 	<classpathentry kind="src" path="Repositorios"/>
+	<classpathentry kind="src" path="Exception"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

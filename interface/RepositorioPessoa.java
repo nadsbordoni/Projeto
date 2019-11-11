@@ -1,7 +1,7 @@
 
 public interface RepositorioPessoa {
 
-	public void inserir(Pessoa pessoa);
+	public void inserir(Pessoa pessoa) throws UFException;
 
 	public boolean procurar(String documento);
 

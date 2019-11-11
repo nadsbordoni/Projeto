@@ -10,9 +10,7 @@ public class RepPessoaL implements RepositorioPessoa {
 		this.proximo = null;
 	}
 	@Override
-	public void inserir(Pessoa pessoa) {
-		//exceção quando tentar inserir
-		
+	public void inserir(Pessoa pessoa) throws UFException {		
 		if (this.proximo == null) {
 			this.pessoa = pessoa;
 			this.proximo = new RepPessoaL();
@@ -30,7 +28,6 @@ public class RepPessoaL implements RepositorioPessoa {
 			resposta = this.proximo.procurar(documento);
 		} else {
 			resposta = false;
-			// exceção de que não tem o usuário e tem que cadastrar
 		}
 		return resposta;
 
