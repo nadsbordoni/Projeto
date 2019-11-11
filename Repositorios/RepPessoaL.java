@@ -1,20 +1,24 @@
-import java.util.*;
-
 
 public class RepPessoaL implements RepositorioPessoa {
 
 	private Pessoa pessoa;
 	private RepPessoaL proximo;
 
+
+	public RepPessoaL() {
+		this.pessoa = null;
+		this.proximo = null;
+	}
 	@Override
 	public void inserir(Pessoa pessoa) {
+		//exceção quando tentar inserir
+		
 		if (this.proximo == null) {
 			this.pessoa = pessoa;
 			this.proximo = new RepPessoaL();
 		} else {
 			this.proximo.inserir(pessoa);
 		}
-
 	}
 
 	@Override

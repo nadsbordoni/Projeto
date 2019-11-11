@@ -8,5 +8,5 @@ public interface RepositorioPessoa {
 	public void atualizar(Pessoa pessoa, Pessoa mudar);
 
 	public void remover(Pessoa pessoa);
-//FAZER REPOSITORIO ARRAY --> ULTIMA ATUALIZAÇÃO 
+
 }
