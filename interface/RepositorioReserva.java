@@ -1,14 +1,11 @@
 
 public interface RepositorioReserva {
 
-	public void inserir (Reserva reserva);
+	public void inserir (Reserva reserva) throws HIException; 
 	
-	public boolean procurar (Reserva reserva); 
-	/* acho que teria que usar a classe pessoa
-	 * duvida
-	 */
+	public boolean procurar (Reserva reserva);  //duvida
 	
-	public void remover (Reserva reserva);
+	public void remover (Reserva reserva) throws RIException;
 	
 	public void atualizar (Reserva reservaAlterada);
 	
