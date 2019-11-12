@@ -4,28 +4,32 @@ public class RepPessoaL implements RepositorioPessoa {
 	private Pessoa pessoa;
 	private RepPessoaL proximo;
 
-
 	public RepPessoaL() {
 		this.pessoa = null;
 		this.proximo = null;
 	}
+
 	@Override
-	public void inserir(Pessoa pessoa) throws UFException {		
-		if (this.proximo == null) {
-			this.pessoa = pessoa;
-			this.proximo = new RepPessoaL();
+	public void inserir(Pessoa pessoa) throws UFException { //provavelmente na classe negocio a exceção
+		if (!this.existe(pessoa.getDocumento())) {
+			if (this.proximo == null) {
+				this.pessoa = pessoa;
+				this.proximo = new RepPessoaL();
+			} else {
+				this.proximo.inserir(pessoa);
+			}
 		} else {
-			this.proximo.inserir(pessoa);
+			throw new UFException();
 		}
 	}
 
 	@Override
-	public boolean procurar(String documento) {
+	public boolean existe(String documento) {
 		boolean resposta = false;
 		if (this.pessoa.getDocumento().equals(documento)) {
 			resposta = true;
 		} else if (this.proximo != null) {
-			resposta = this.proximo.procurar(documento);
+			resposta = this.proximo.existe(documento);
 		} else {
 			resposta = false;
 		}
@@ -34,30 +38,45 @@ public class RepPessoaL implements RepositorioPessoa {
 	}
 
 	@Override
-	public void atualizar(Pessoa pessoa, Pessoa mudar) {
-		// ver se a lista ta vazia --> erro
-		if (this.pessoa.equals(pessoa))
-			// tem que criar uma pessoa
-			this.pessoa = mudar;
-
-		// exceção se nao tiver aquele documento
-		// exceção se nao tiver a pessoa
+	public void atualizar(Pessoa pessoa, Pessoa mudar) throws UIException {
+		if (this.pessoa != null) {
+			if (this.pessoa.equals(pessoa)) {
+				this.pessoa = mudar;
+			} else {
+				this.proximo.atualizar(pessoa, mudar);
+			}
+		} else {
+			throw new UIException();
+		}
 	}
 
 	@Override
-	public void remover(Pessoa pessoa) {
-		if (this.pessoa.getDocumento().equals(pessoa.getDocumento())) {
-			this.pessoa = this.proximo.pessoa;
-			this.proximo = this.proximo.proximo;
-		} else if (this.proximo != null) {
-			this.proximo.remover(pessoa);
+	public void remover(Pessoa pessoa) throws UIException {
+		if (this.pessoa != null) {
+			if (this.pessoa.getDocumento().equals(pessoa.getDocumento())) {
+				this.pessoa = this.proximo.pessoa;
+				this.proximo = this.proximo.proximo;
+			} else {
+				this.proximo.remover(pessoa);
+			}
 		} else {
-			// não existe usuario, tem que cadastrar
+			throw new UIException();
 		}
 
 	}
-	
 
+	public Pessoa procurarPessoa(String documento) throws UIException {
+		Pessoa aux = null;
+		if (this.pessoa != null) {
+			if (this.pessoa.getDocumento().equals(documento)) {
+				aux = this.pessoa;
+			} else {
+				aux = this.proximo.procurarPessoa(documento);
+			}
+		} else {
+			throw new UIException();
+		}
+		return aux;
+	}
 
 }
-

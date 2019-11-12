@@ -1,8 +1,11 @@
+//aqui tem que importar pessoa
+
 public class Reserva {
 	private int hora;
 	private int dia;
 	private int mes;
 	private int ano; 
+	//private pessoa pessoa
 
 	Reserva (int hora, int dia, int mes) {
 		this.hora = hora;
@@ -41,5 +44,5 @@ public class Reserva {
 	public void setAno() {
 		this.ano = ano;
 	}
-	
+	// get e set reserva 
 	}

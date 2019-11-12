@@ -12,7 +12,7 @@ public class RepReservaL implements RepositorioReserva{
 	@Override
 	public void inserir(Reserva reserva) throws HIException {  
 		/*
-		 * tem que ver se o usuario foi cadastrado... 
+		 * tem que ver se o usuario foi cadastrado... --> isso é na classe negocio 
 		 * revisa que parece estranho
 		 * pra inserir tem que ver se já não existe a reserva e tem que saber se tá dentro do horario permitido
 		 */

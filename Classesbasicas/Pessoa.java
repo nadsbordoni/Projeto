@@ -1,11 +1,10 @@
 
 public abstract class Pessoa {
 	private String nome;
-	
 	private String zipcode; // endereço
 	private String telefone;
 
-	Pessoa(String nome, String zipcode, String telefone, String documento) {
+	Pessoa(String nome, String zipcode, String telefone) {
 		this.nome = nome;
 		this.zipcode = zipcode;
 		this.telefone = telefone;
