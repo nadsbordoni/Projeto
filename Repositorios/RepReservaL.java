@@ -15,13 +15,14 @@ public class RepReservaL implements RepositorioReserva{
 		 * tem que ver se o usuario foi cadastrado... --> isso é na classe negocio 
 		 * revisa que parece estranho
 		 * pra inserir tem que ver se já não existe a reserva e tem que saber se tá dentro do horario permitido
+		 * ver a hora no inserir
 		 */
 		if (this.proximo == null) {
-			if (!this.procurar(reserva)) {
+			if (!this.procurar(reserva) && horaOk(reserva.getHora())) {
 				this.reserva = reserva;
 				this.proximo = new RepReservaL();
 			}
-			else if (this.procurar(reserva)) {
+			else if (this.procurar(reserva) || !horaOk(reserva.getHora())) {
 				throw new HIException();
 			}
 		}
@@ -61,6 +62,14 @@ public class RepReservaL implements RepositorioReserva{
 	public void atualizar(Reserva reservaAlterada) {
 		
 		
+	}
+	
+	public boolean horaOk(int hora) {
+		boolean ok = false;
+		if (hora>=9 && hora<=18) {
+			ok = true;
+		}
+		return ok;
 	}
 
 }
