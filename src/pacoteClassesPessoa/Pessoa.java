@@ -14,7 +14,7 @@ public abstract class Pessoa {
 	public String getNome() {
 		return this.nome;
 	}
-	
+
 	public String getZipcode() {
 		return this.zipcode;
 	}
@@ -22,13 +22,14 @@ public abstract class Pessoa {
 	public String getTelefone() {
 		return this.telefone;
 	}
+
 	public String getDocumento() {
 		return null;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
 
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
@@ -46,7 +47,5 @@ public abstract class Pessoa {
 	public boolean equals(PessoaJuridica pessoa) {
 		return false;
 	}
-	
-
 
 }

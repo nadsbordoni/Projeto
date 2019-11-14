@@ -11,7 +11,7 @@ public class RepPessoaL implements RepositorioPessoa {
 	}
 
 	@Override
-	public void inserir(Pessoa pessoa) throws UFException { //provavelmente na classe negocio a exceção
+	public void inserir(Pessoa pessoa) throws UFException { // provavelmente na classe negocio a exceção
 		if (!this.existe(pessoa.getDocumento())) {
 			if (this.proximo == null) {
 				this.pessoa = pessoa;

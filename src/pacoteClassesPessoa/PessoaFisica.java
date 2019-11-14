@@ -8,6 +8,7 @@ public class PessoaFisica extends Pessoa {
 		this.CPF = CPF;
 
 	}
+
 	@Override
 	public boolean equals(PessoaFisica pessoa) {
 		if (this.CPF == pessoa.CPF)
@@ -15,6 +16,7 @@ public class PessoaFisica extends Pessoa {
 		else
 			return false;
 	}
+
 	@Override
 	public String getDocumento() {
 		return this.CPF;
