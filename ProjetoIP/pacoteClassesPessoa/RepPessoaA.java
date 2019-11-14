@@ -1,5 +1,9 @@
 package pacoteClassesPessoa;
 
+import pacoteExcecoes.UFException;
+import pacoteExcecoes.UIException;
+
+
 public class RepPessoaA implements RepositorioPessoa {
 	private Pessoa[] pessoaArray;
 	private int indice;
@@ -10,13 +14,10 @@ public class RepPessoaA implements RepositorioPessoa {
 	}
 
 	@Override
-	public void inserir(Pessoa pessoa) throws UFException, ACException {
-		if (!this.existe(pessoa.getDocumento()) && this.indice < this.pessoaArray.length) { // se a pessoa nao existe,
-																							// insere
+	public void inserir(Pessoa pessoa) throws UFException {
+		if (!this.existe(pessoa.getDocumento()) && this.indice < this.pessoaArray.length ) {
 			this.pessoaArray[indice] = pessoa;
 			this.indice++;
-		} else if (this.indice >= this.pessoaArray.length) {// caso array seja pequena
-			throw new ACException();
 		} else {
 			throw new UFException();
 		}
@@ -36,9 +37,9 @@ public class RepPessoaA implements RepositorioPessoa {
 
 	@Override
 	public void atualizar(Pessoa pessoa, Pessoa mudar) throws UIException {
-		boolean lala = pessoa.equals(pessoa);
+		boolean valido = pessoa.equals(mudar);
 
-		if (lala) {
+		if (valido) {
 			int a = this.indice(pessoa.getDocumento());
 			this.pessoaArray[a] = mudar;
 		} else {
@@ -49,29 +50,30 @@ public class RepPessoaA implements RepositorioPessoa {
 
 	@Override
 	public void remover(Pessoa pessoa) throws UIException {
-		int remove = this.indice(pessoa.getDocumento());
-
-		if (remove >= 0) { // mudar porque eu vou usar procurar pessoa, entao esse remove nao usa
-			for (int c = remove; c < indice; c++) {
-
-				this.pessoaArray[c] = this.pessoaArray[c + 1];// ver se isso funciona, porque é null no meio
+		boolean encontrado = false;
+		for (int a = 0; a <= indice && !encontrado; a++) {
+			if (this.pessoaArray[a].equals(pessoa)) {
+				for (int k = a; k <= indice - 1; k++) {
+					this.pessoaArray[k] = this.pessoaArray[k + 1];
+				}
+				encontrado = true;
+				indice--;
 			}
-		} else {
-			throw new UIException();
-		}
 
+		}
 	}
 
 	public int indice(String documento) throws UIException {
 		int ind = 0;
 		boolean tem = false;
+		
 		for (int b = 0; b < indice && !tem; b++) {
 			if (this.pessoaArray[b].getDocumento().equals(documento)) {
 				tem = true;
 				ind = b;
 			}
 		}
-		if (!tem) { // ver se isso ta certo
+		if (!tem) { 
 			throw new UIException();
 		}
 
@@ -79,9 +81,18 @@ public class RepPessoaA implements RepositorioPessoa {
 	}
 
 	public Pessoa procurarPessoa(String documento) throws UIException {
-		// caso der problema, checar se existe
-		int indice2 = this.indice(documento);
-		return this.pessoaArray[indice];
-	} // pensar em casa
+		int indice2 = 0;
+		boolean encontrou = false;
+		for (int n = 0; n <= indice && !encontrou; n++) {
+			if (this.pessoaArray[n].getDocumento().equals(documento)) {
+				encontrou = true;
+				indice2 = n;
+			}
+		}
+		if (!encontrou) {
+			throw new UIException();
+		}
+		return this.pessoaArray[indice2];
+	}
 
 }

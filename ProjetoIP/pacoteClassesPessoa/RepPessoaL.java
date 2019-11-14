@@ -1,5 +1,8 @@
 package pacoteClassesPessoa;
 
+import pacoteExcecoes.UFException;
+import pacoteExcecoes.UIException;
+
 public class RepPessoaL implements RepositorioPessoa {
 
 	private Pessoa pessoa;

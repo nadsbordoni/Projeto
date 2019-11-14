@@ -1,8 +1,11 @@
 package pacoteClassesPessoa;
 
+import pacoteExcecoes.UFException;
+import pacoteExcecoes.UIException;
+
 public interface RepositorioPessoa {
 
-	public void inserir(Pessoa pessoa) throws UFException, ACException;
+	public void inserir(Pessoa pessoa) throws UFException;
 
 	public boolean existe(String documento);
 
