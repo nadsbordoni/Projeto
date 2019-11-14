@@ -1,3 +1,4 @@
+package pacoteClassesPessoa;
 
 public class PessoaJuridica extends Pessoa {
 	private String CNPJ;

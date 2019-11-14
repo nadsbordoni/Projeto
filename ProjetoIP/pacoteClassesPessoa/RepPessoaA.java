@@ -1,3 +1,4 @@
+package pacoteClassesPessoa;
 
 public class RepPessoaA implements RepositorioPessoa {
 	private Pessoa[] pessoaArray;

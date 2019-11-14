@@ -1,3 +1,4 @@
+package pacoteClassesPessoa;
 
 public class PessoaFisica extends Pessoa {
 	private String CPF;

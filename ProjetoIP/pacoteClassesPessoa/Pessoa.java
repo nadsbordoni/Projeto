@@ -1,3 +1,4 @@
+package pacoteClassesPessoa;
 
 public abstract class Pessoa {
 	private String nome;

@@ -1,3 +1,4 @@
+package pacoteClassesReserva;
 import HIException;
 import RIException;
 

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="Classesbasicas"/>
-	<classpathentry kind="src" path="interface"/>
-	<classpathentry kind="src" path="Repositorios"/>
-	<classpathentry kind="src" path="Exception"/>
+	<classpathentry kind="src" path="ProjetoIP"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

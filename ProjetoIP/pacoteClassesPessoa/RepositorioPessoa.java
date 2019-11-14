@@ -1,3 +1,4 @@
+package pacoteClassesPessoa;
 
 public interface RepositorioPessoa {
 

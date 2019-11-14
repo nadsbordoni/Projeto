@@ -1,3 +1,4 @@
+package pacoteExcecoes;
 
 public class RIException extends Exception {
 	public RIException() {

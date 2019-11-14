@@ -1,3 +1,4 @@
+package pacoteExcecoes;
 
 public class HIException extends Exception{
 	public HIException() {
