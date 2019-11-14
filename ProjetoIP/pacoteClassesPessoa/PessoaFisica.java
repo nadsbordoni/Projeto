@@ -10,8 +10,9 @@ public class PessoaFisica extends Pessoa {
 	}
 
 	@Override
-	public boolean equals(PessoaFisica pessoa) {
-		if (this.CPF == pessoa.CPF)
+	public boolean igual(Pessoa pessoa) {
+		PessoaFisica p = (PessoaFisica) pessoa;
+		if (this.CPF.equals(p.CPF))
 			return true;
 		else
 			return false;

@@ -40,12 +40,9 @@ public abstract class Pessoa {
 
 	}
 
-	public boolean equals(PessoaFisica pessoa) {
+	public boolean igual(Pessoa pessoa) {
 		return false;
 	}
 
-	public boolean equals(PessoaJuridica pessoa) {
-		return false;
-	}
 
 }

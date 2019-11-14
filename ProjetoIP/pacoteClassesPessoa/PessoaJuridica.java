@@ -9,8 +9,9 @@ public class PessoaJuridica extends Pessoa {
 	}
 
 	@Override
-	public boolean equals(PessoaJuridica pessoa) {
-		if (this.CNPJ == pessoa.CNPJ)
+	public boolean igual(Pessoa pessoa) {
+		PessoaJuridica p = (PessoaJuridica)pessoa;
+		if (this.CNPJ == p.CNPJ)
 			return true;
 		else
 			return false;

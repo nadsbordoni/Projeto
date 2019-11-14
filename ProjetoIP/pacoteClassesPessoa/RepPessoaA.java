@@ -1,8 +1,7 @@
 package pacoteClassesPessoa;
-
+//TESTEI ESSA PORRA
 import pacoteExcecoes.UFException;
 import pacoteExcecoes.UIException;
-
 
 public class RepPessoaA implements RepositorioPessoa {
 	private Pessoa[] pessoaArray;
@@ -15,7 +14,7 @@ public class RepPessoaA implements RepositorioPessoa {
 
 	@Override
 	public void inserir(Pessoa pessoa) throws UFException {
-		if (!this.existe(pessoa.getDocumento()) && this.indice < this.pessoaArray.length ) {
+		if (!this.existe(pessoa.getDocumento()) && this.indice < this.pessoaArray.length) {
 			this.pessoaArray[indice] = pessoa;
 			this.indice++;
 		} else {
@@ -37,7 +36,8 @@ public class RepPessoaA implements RepositorioPessoa {
 
 	@Override
 	public void atualizar(Pessoa pessoa, Pessoa mudar) throws UIException {
-		boolean valido = pessoa.equals(mudar);
+		boolean valido = pessoa.igual(mudar);
+		
 
 		if (valido) {
 			int a = this.indice(pessoa.getDocumento());
@@ -66,14 +66,14 @@ public class RepPessoaA implements RepositorioPessoa {
 	public int indice(String documento) throws UIException {
 		int ind = 0;
 		boolean tem = false;
-		
+
 		for (int b = 0; b < indice && !tem; b++) {
 			if (this.pessoaArray[b].getDocumento().equals(documento)) {
 				tem = true;
 				ind = b;
 			}
 		}
-		if (!tem) { 
+		if (!tem) {
 			throw new UIException();
 		}
 

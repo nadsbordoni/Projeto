@@ -1,4 +1,7 @@
 package pacoteClassesPessoa;
+//TESTEI ESSA PORRAAAAA
+
+import java.util.Scanner;
 
 import pacoteExcecoes.UFException;
 import pacoteExcecoes.UIException;
@@ -30,6 +33,8 @@ public class RepPessoaL implements RepositorioPessoa {
 	@Override
 	public boolean existe(String documento) {
 		boolean resposta = false;
+		if(this.pessoa == null)
+			return false;
 		if (this.pessoa.getDocumento().equals(documento)) {
 			resposta = true;
 		} else if (this.proximo != null) {
@@ -44,7 +49,7 @@ public class RepPessoaL implements RepositorioPessoa {
 	@Override
 	public void atualizar(Pessoa pessoa, Pessoa mudar) throws UIException {
 		if (this.pessoa != null) {
-			if (this.pessoa.equals(pessoa)) {
+			if (this.pessoa.igual(pessoa)) {
 				this.pessoa = mudar;
 			} else {
 				this.proximo.atualizar(pessoa, mudar);
@@ -82,5 +87,5 @@ public class RepPessoaL implements RepositorioPessoa {
 		}
 		return aux;
 	}
-
+	
 }
