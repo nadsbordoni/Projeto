@@ -1,11 +1,10 @@
 package pacoteClassesReserva;
 
 import pacoteClassesPessoa.RepositorioPessoa;
-import pacoteClassesPessoa.Pessoa;
 import pacoteClassesPessoa.RepPessoaL;
 
 public class Reserva {
-	private Pessoa pessoa;  //duvida
+	private RepositorioPessoa pessoa;  //duvida
 	private int hora;
 	private int dia;
 	private int mes;
@@ -16,7 +15,7 @@ public class Reserva {
 		this.dia = dia;
 		this.mes = mes;
 		this.ano = ano;
-		//this.pessoa = ???
+		this.pessoa = new RepPessoaL(); //duvida
 	}
 
 	public int getHora() {
@@ -51,11 +50,11 @@ public class Reserva {
 		this.ano = ano;
 	}
 
-	public Pessoa getPessoa() {
+	public RepositorioPessoa getPessoa() { 
 		return this.pessoa;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
+	public void setPessoa(RepositorioPessoa pessoa) {
 		this.pessoa = pessoa;
 	}
 
