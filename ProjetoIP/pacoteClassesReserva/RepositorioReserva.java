@@ -1,7 +1,7 @@
 package pacoteClassesReserva;
 
 import pacoteExcecoes.HIException;
-import pacoteExcecoes.RIException;
+import pacoteExcecoes.RNCException;
 
 
 public interface RepositorioReserva {
@@ -10,9 +10,9 @@ public interface RepositorioReserva {
 
 	public boolean procurar(Reserva reserva); // duvida
 
-	public void remover(Reserva reserva) throws RIException;
+	public void remover(Reserva reserva) throws RNCException;
 
-	public void atualizar(Reserva reservaAlterada);
+	public void atualizar(Reserva reserva, Reserva alterada) throws RNCException;
 
 	public boolean horaOk(int hora); // e agora josé?
 

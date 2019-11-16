@@ -1,7 +1,8 @@
 package pacoteClassesReserva;
 
 import pacoteExcecoes.HIException;
-import pacoteExcecoes.RIException;
+import pacoteExcecoes.RNCException;
+import pacoteExcecoes.UIException;
 
 public class RepReservaL implements RepositorioReserva {
 
@@ -14,12 +15,7 @@ public class RepReservaL implements RepositorioReserva {
 	}
 
 	@Override
-	public void inserir(Reserva reserva) throws HIException {
-		/*
-		 * tem que ver se o usuario foi cadastrado... --> isso é na classe negocio
-		 * revisa que parece estranho pra inserir tem que ver se já não existe a reserva
-		 * e tem que saber se tá dentro do horario permitido ver a hora no inserir
-		 */
+	public void inserir(Reserva reserva) throws HIException { //ve se eh na classe negocio o coisa do usuario 
 		if (this.proximo == null) {
 			if (!this.procurar(reserva) && horaOk(reserva.getHora())) {
 				this.reserva = reserva;
@@ -45,7 +41,7 @@ public class RepReservaL implements RepositorioReserva {
 	}
 
 	@Override
-	public void remover(Reserva reserva) throws RIException {
+	public void remover(Reserva reserva) throws RNCException {
 		if (this.reserva != null) {
 			if (this.reserva == reserva) {
 				this.reserva = this.proximo.reserva;
@@ -54,14 +50,22 @@ public class RepReservaL implements RepositorioReserva {
 				this.proximo.remover(reserva);
 			}
 		} else {
-			throw new RIException();
+			throw new RNCException();
 		}
 
 	}
 
 	@Override
-	public void atualizar(Reserva reservaAlterada) {
-
+	public void atualizar(Reserva reserva, Reserva alterada) throws RNCException {
+		if (this.reserva != null) {
+			if (this.reserva == reserva) {
+				this.reserva = alterada;
+			} else {
+				this.proximo.atualizar(reserva, alterada);
+			}
+		} else {
+			throw new RNCException();
+		}
 	}
 
 	public boolean horaOk(int hora) {
