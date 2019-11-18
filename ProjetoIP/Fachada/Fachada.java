@@ -3,15 +3,15 @@ package Fachada;
 import pacoteExcecoes.*;
 import pacoteClassesPessoa.*;
 import pacoteClassesReserva.*;
+import pacoteClassesDemanda.*;
 
 public class Fachada {
 	private NegocioPessoa people;
+	private NegocioDemanda demanda;
 	private NegocioReserva horario;
-	// private NEgocioSessao
-
  	public Fachada (int escolha) throws NOException {
  		this.people = new NegocioPessoa(escolha);
- 		//this.sessao = new NegocioSessao(escolha)
+ 		this.demanda = new NegocioDemanda(escolha);
  		this.horario = new NegocioReserva(escolha);
  	}
 //Pessoa
@@ -34,7 +34,27 @@ public class Fachada {
 	public Pessoa procurarPessoa(String documento) throws UIException{
 		return this.people.procurarPessoa(documento);
 	}
-//Sessao
+//Demanda
+	public void cadastrarDemanda(Demanda demanda) throws EDException{
+		this.demanda.cadastrar(demanda);
+	}
+
+	public void removerDemanda(Demanda demanda) throws NDException{
+		this.demanda.remover(demanda);
+	}
+
+	public void atualizarDemanda(Demanda demanda, Demanda nova) throws NDException{
+		this.demanda.atualizarDemanda(demanda, nova);
+	}
+
+	public Demanda procurarDemanda(Demanda demanda)
+			throws NDException{
+		return this.demanda.procurarDemanda(demanda);
+	}
+	
+	public boolean existe (Demanda demanda) {
+		return this.demanda.existe(demanda);
+	}
 
 //Reserva
 	public void cadastrarReserva(Reserva reserva) throws HIException {
