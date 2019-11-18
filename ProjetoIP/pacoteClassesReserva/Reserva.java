@@ -1,23 +1,22 @@
 package pacoteClassesReserva;
 
 import pacoteClassesPessoa.RepositorioPessoa;
+import pacoteClassesPessoa.Pessoa;
 import pacoteClassesPessoa.RepPessoaL;
 
 public class Reserva {
-	private RepositorioPessoa pessoa;  //duvida
+	private Pessoa pessoa;  //duvida
 	private int hora;
 	private int dia;
 	private int mes;
 	private int ano;
-	private RepositorioReserva reserva;  //duvida tambem
 
-	Reserva(int hora, int dia, int mes, int ano) {
+	Reserva(int hora, int dia, int mes, int ano, Pessoa pessoa) {
 		this.hora = hora;
 		this.dia = dia;
 		this.mes = mes;
 		this.ano = ano;
-		this.pessoa = new RepPessoaL(); //duvida
-		this.reserva = new RepReservaL(); //duvidaaaaaa
+		this.pessoa = pessoa; //duvida
 	}
 
 	public int getHora() {
@@ -53,22 +52,26 @@ public class Reserva {
 	}
 
 	public RepositorioPessoa getPessoa() { 
-		return this.pessoa;
+		return this.getPessoa();
 	}
 
-	public void setPessoa(RepositorioPessoa pessoa) {
+	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
 	
 	public RepositorioReserva getReserva() {
-		return this.reserva;
+		return this.getReserva();
 	}
 	
-	public void setReserva(RepositorioReserva reserva) {
-		this.reserva = reserva;
+	public void setReserva(Reserva reserva) {
+		this.mes = reserva.getMes();
 	}
 	
 	public boolean igual(Reserva reserva) {
+		if(this.mes == reserva.getMes() && this.hora == reserva.getHora() && this.dia == reserva.getDia() 
+				&& this.ano == reserva.getAno()) {
+			return true;
+		}
 		return false;
 		
 	}
