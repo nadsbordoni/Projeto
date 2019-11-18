@@ -1,5 +1,6 @@
 package pacoteClassesDemanda;
-
+//testado
+import pacoteClassesPessoa.PessoaFisica;
 import pacoteExcecoes.EDException;
 import pacoteExcecoes.NDException;
 
@@ -84,5 +85,5 @@ public class RepDemandaL implements RepositorioDemanda {
 		}
 		return existe;
 	}
-
+	
 }

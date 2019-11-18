@@ -51,7 +51,7 @@ public class RepPessoaA implements RepositorioPessoa {
 	@Override
 	public void remover(Pessoa pessoa) throws UIException {
 		boolean encontrado = false;
-		for (int a = 0; a <= indice && !encontrado; a++) {
+		for (int a = 0; a <= indice && (!encontrado && this.pessoaArray[a] != null); a++) {
 			if (this.pessoaArray[a].equals(pessoa)) {
 				for (int k = a; k <= indice - 1; k++) {
 					this.pessoaArray[k] = this.pessoaArray[k + 1];
@@ -60,6 +60,9 @@ public class RepPessoaA implements RepositorioPessoa {
 				indice--;
 			}
 
+		}
+		if (!encontrado) {
+			throw new UIException();
 		}
 	}
 

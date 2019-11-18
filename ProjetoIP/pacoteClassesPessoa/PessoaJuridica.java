@@ -3,7 +3,7 @@ package pacoteClassesPessoa;
 public class PessoaJuridica extends Pessoa {
 	private String CNPJ;
 
-	PessoaJuridica(String nome, String zipcode, String telefone, String CNPJ) {
+	public PessoaJuridica(String nome, String zipcode, String telefone, String CNPJ) {
 		super(nome, zipcode, telefone);
 		this.CNPJ = CNPJ;
 	}
