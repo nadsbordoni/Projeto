@@ -3,14 +3,15 @@ package pacoteClassesDemanda;
 import pacoteClassesPessoa.*;
 
 public class Demanda {
+	private Pessoa pessoa;
 	private String area;
 	private String demanda;
-	private String num_proc;
 
-	Demanda(String area, String demanda, String num_proc) {
+	Demanda(Pessoa pessoa, String area, String demanda) {
+		this.pessoa = pessoa;
 		this.area = area;
 		this.demanda = demanda;
-		this.num_proc = num_proc;
+
 	}
 
 	public String getArea() {
@@ -29,12 +30,20 @@ public class Demanda {
 		this.demanda = demanda;
 	}
 
-	public String getNum_proc() {
-		return num_proc;
+	public Pessoa getPessoa() {
+		return this.pessoa;
 	}
 
-	public void setNum_proc(String num_proc) {
-		this.num_proc = num_proc;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	public boolean igual(Demanda demanda) {
+		if (this.pessoa == demanda.pessoa) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }
