@@ -2,16 +2,17 @@ package Fachada;
 
 import pacoteExcecoes.*;
 import pacoteClassesPessoa.*;
+import pacoteClassesReserva.*;
 
 public class Fachada {
 	private NegocioPessoa people;
-	// private NegocioReserva
+	private NegocioReserva horario;
 	// private NEgocioSessao
 
  	public Fachada (int escolha) throws NOException {
  		this.people = new NegocioPessoa(escolha);
  		//this.sessao = new NegocioSessao(escolha)
- 		//this.reserva = new NegocioReserva(escolha)
+ 		this.horario = new NegocioReserva(escolha);
  	}
 //Pessoa
  	public void cadastrarPessoa(Pessoa pessoa) throws UFException {
@@ -33,7 +34,24 @@ public class Fachada {
 	public Pessoa procurarPessoa(String documento) throws UIException{
 		return this.people.procurarPessoa(documento);
 	}
-}
 //Sessao
 
 //Reserva
+	public void cadastrarReserva(Reserva reserva) throws HIException {
+		this.horario.cadastrar(reserva);
+	}
+	
+	public boolean procurarReserva(Reserva reserva) {
+		return this.horario.procurar(reserva);
+	}
+	
+	public void atualizarReserva(Reserva reserva, Reserva alterada) throws RNCException{
+		this.horario.atualizar(reserva, alterada);
+	}
+	
+	public void deletarReserva(Reserva reserva) throws RNCException{
+		this.horario.deletar(reserva);
+	}
+}
+	
+

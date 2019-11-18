@@ -9,6 +9,7 @@ public class Reserva {
 	private int dia;
 	private int mes;
 	private int ano;
+	private RepositorioReserva reserva;  //duvida tambem
 
 	Reserva(int hora, int dia, int mes, int ano) {
 		this.hora = hora;
@@ -16,6 +17,7 @@ public class Reserva {
 		this.mes = mes;
 		this.ano = ano;
 		this.pessoa = new RepPessoaL(); //duvida
+		this.reserva = new RepReservaL(); //duvidaaaaaa
 	}
 
 	public int getHora() {
@@ -57,5 +59,17 @@ public class Reserva {
 	public void setPessoa(RepositorioPessoa pessoa) {
 		this.pessoa = pessoa;
 	}
-
+	
+	public RepositorioReserva getReserva() {
+		return this.reserva;
+	}
+	
+	public void setReserva(RepositorioReserva reserva) {
+		this.reserva = reserva;
+	}
+	
+	public boolean igual(Reserva reserva) {
+		return false;
+		
+	}
 }
