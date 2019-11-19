@@ -1,11 +1,9 @@
 package pacoteClassesReserva;
 
-import pacoteClassesPessoa.RepositorioPessoa;
 import pacoteClassesPessoa.Pessoa;
-import pacoteClassesPessoa.RepPessoaL;
 
 public class Reserva {
-	private Pessoa pessoa;  //duvida
+	private Pessoa pessoa; 
 	private int hora;
 	private int dia;
 	private int mes;
@@ -16,7 +14,7 @@ public class Reserva {
 		this.dia = dia;
 		this.mes = mes;
 		this.ano = ano;
-		this.pessoa = pessoa; //duvida
+		this.pessoa = pessoa;
 	}
 
 	public int getHora() {
@@ -51,21 +49,14 @@ public class Reserva {
 		this.ano = ano;
 	}
 
-	public RepositorioPessoa getPessoa() { 
-		return this.getPessoa();
+	public Pessoa getPessoa() { 
+		return this.pessoa;
 	}
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
 	
-	public RepositorioReserva getReserva() {
-		return this.getReserva();
-	}
-	
-	public void setReserva(Reserva reserva) {
-		this.mes = reserva.getMes();
-	}
 	
 	public boolean igual(Reserva reserva) {
 		if(this.mes == reserva.getMes() && this.hora == reserva.getHora() && this.dia == reserva.getDia() 
@@ -75,4 +66,30 @@ public class Reserva {
 		return false;
 		
 	}
+	
+	public boolean igualCompleto(Reserva reserva) {
+		if(this.mes == reserva.getMes() && this.hora == reserva.getHora() && this.dia == reserva.getDia() 
+				&& this.ano == reserva.getAno() && this.pessoa.equals(reserva.pessoa)) {
+			return true;
+		}
+		return false;
+		
+	}
+	
+	public boolean documentoIgual(Reserva reserva) {
+		if(this.pessoa.getDocumento().equals(reserva.pessoa.getDocumento())) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean horaOk(Reserva reserva) {
+		boolean ok = false;
+		if (hora >= 9 && hora <= 18) {
+			ok = true;
+		}
+		return ok;
+	}
+	
+	
 }

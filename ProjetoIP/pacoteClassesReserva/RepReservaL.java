@@ -2,7 +2,6 @@ package pacoteClassesReserva;
 
 import pacoteExcecoes.HIException;
 import pacoteExcecoes.RNCException;
-import pacoteExcecoes.UIException;
 
 public class RepReservaL implements RepositorioReserva {
 
@@ -15,12 +14,12 @@ public class RepReservaL implements RepositorioReserva {
 	}
 
 	@Override
-	public void inserir(Reserva reserva) throws HIException { //ve se eh na classe negocio o coisa do usuario 
+	public void inserir(Reserva reserva) throws HIException { 
 		if (this.proximo == null) {
-			if (!this.procurar(reserva) && horaOk(reserva.getHora())) {
+			if (!this.existe(reserva) && reserva.horaOk(reserva)) {
 				this.reserva = reserva;
 				this.proximo = new RepReservaL();
-			} else if (this.procurar(reserva) || !horaOk(reserva.getHora())) {
+			} else if (this.existe(reserva) || !reserva.horaOk(reserva)) {
 				throw new HIException();
 			}
 		} else {
@@ -29,12 +28,12 @@ public class RepReservaL implements RepositorioReserva {
 	}
 
 	@Override
-	public boolean procurar(Reserva reserva) {
+	public boolean existe(Reserva reserva) {
 		if (this.reserva != null) {
-			if (this.reserva == reserva) {
+			if (this.reserva.igual(reserva)) {
 				return true;
 			} else
-				return this.proximo.procurar(reserva);
+				return this.proximo.existe(reserva);
 		} else {
 			return false;
 		}
@@ -43,7 +42,7 @@ public class RepReservaL implements RepositorioReserva {
 	@Override
 	public void remover(Reserva reserva) throws RNCException {
 		if (this.reserva != null) {
-			if (this.reserva == reserva) {
+			if (this.reserva.igualCompleto(reserva)) {
 				this.reserva = this.proximo.reserva;
 				this.proximo = this.proximo.proximo;
 			} else {
@@ -58,7 +57,7 @@ public class RepReservaL implements RepositorioReserva {
 	@Override
 	public void atualizar(Reserva reserva, Reserva alterada) throws RNCException {
 		if (this.reserva != null) {
-			if (this.reserva == reserva) {
+			if (this.reserva.igualCompleto(reserva)) {
 				this.reserva = alterada;
 			} else {
 				this.proximo.atualizar(reserva, alterada);
@@ -68,12 +67,20 @@ public class RepReservaL implements RepositorioReserva {
 		}
 	}
 
-	public boolean horaOk(int hora) {
-		boolean ok = false;
-		if (hora >= 9 && hora <= 18) {
-			ok = true;
+	
+	public String procurarReserva(Reserva reserva) throws RNCException {
+		String info = "";
+		if (this.reserva != null) {
+			if (this.reserva.documentoIgual(reserva)) {
+				info = reserva.getHora() + "\n" + reserva.getDia() + "\n" + reserva.getMes() + "\n" + reserva.getAno();
+			} else {
+				this.proximo.procurarReserva(reserva);
+			}
+		} else {
+			throw new RNCException();
 		}
-		return ok;
+		return info;
 	}
+
 
 }

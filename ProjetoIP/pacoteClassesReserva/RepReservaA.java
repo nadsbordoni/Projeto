@@ -1,9 +1,7 @@
 package pacoteClassesReserva;
 
-import pacoteClassesPessoa.Pessoa;
 import pacoteExcecoes.HIException;
 import pacoteExcecoes.RNCException;
-import pacoteExcecoes.UIException;
 
 public class RepReservaA implements RepositorioReserva {
 	
@@ -17,7 +15,7 @@ public class RepReservaA implements RepositorioReserva {
 	
 	@Override
 	public void inserir(Reserva reserva) throws HIException {
-		if (!this.procurar(reserva) && horaOk(reserva.getHora())) {
+		if (!this.existe(reserva) && reserva.horaOk(reserva)) {
 			this.reserva[this.indice] = reserva;
 			this.indice++;
 		} else {
@@ -28,10 +26,20 @@ public class RepReservaA implements RepositorioReserva {
 }
 
 	@Override
-	public boolean procurar(Reserva reserva) {
+	public boolean existe(Reserva reserva) {
 		boolean resposta = false;
 		for (int a = 0; a < indice && !resposta; a++) {
-			if (this.reserva[a] == reserva) {
+			if (this.reserva[a].igual(reserva)) {
+				resposta = true;
+			}
+		}
+		return resposta;
+	}
+	
+	public boolean existeCompleto(Reserva reserva) {
+		boolean resposta = false;
+		for (int a = 0; a < indice && !resposta; a++) {
+			if (this.reserva[a].igualCompleto(reserva)) {
 				resposta = true;
 			}
 		}
@@ -40,7 +48,7 @@ public class RepReservaA implements RepositorioReserva {
 
 	@Override
 	public void remover(Reserva reserva) throws RNCException {
-		if (this.procurar(reserva)) {
+		if (this.existeCompleto(reserva)) {
 			int proc = this.indice(reserva);
 			for (int i = proc; i <= indice - 1; i++) {
 				this.reserva[i] = this.reserva[i + 1];
@@ -53,7 +61,7 @@ public class RepReservaA implements RepositorioReserva {
 	
 	public int indice(Reserva reserva) throws RNCException {
 		for (int i = 0; i < 100; i++) {
-			if (this.reserva[i] != null && this.reserva[i] == reserva) {  //to fazendo isso errado q eu sei
+			if (this.reserva[i] != null && this.reserva[i].igual(reserva)) {  
 				return i;
 			}
 
@@ -68,13 +76,20 @@ public class RepReservaA implements RepositorioReserva {
 		
 	}
 
+
 	@Override
-	public boolean horaOk(int hora) {
-		boolean ok = false;
-		if (hora >= 9 && hora <= 18) {
-			ok = true;
+	public String procurarReserva(Reserva reserva) throws RNCException {
+		String info = "";
+		if (this.existeCompleto(reserva)) {	
+			int proc = this.indice(reserva);
+			for (int i = proc; i <= indice - 1; i++) {
+				info = reserva.getHora() + "\n" + reserva.getDia() + "\n" + reserva.getMes() + "\n" + reserva.getAno();
+			}
 		}
-		return ok;
+		else {
+			throw new RNCException();
+		}
+		return info;
 	}
 	
 	

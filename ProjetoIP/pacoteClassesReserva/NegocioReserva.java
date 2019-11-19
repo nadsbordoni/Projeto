@@ -22,8 +22,8 @@ public class NegocioReserva {
 		this.horario.inserir(reserva);
 	}
 
-	public boolean procurar(Reserva reserva) {
-		return this.horario.procurar(reserva);
+	public boolean existe(Reserva reserva) {
+		return this.horario.existe(reserva);
 	}
 
 	public void atualizar(Reserva reserva, Reserva alterada) throws RNCException{
@@ -32,6 +32,10 @@ public class NegocioReserva {
 
 	public void deletar(Reserva reserva) throws RNCException{
 		this.horario.remover(reserva);
+	}
+	
+	public String procurarReserva(Reserva reserva) throws RNCException{
+		return this.horario.procurarReserva(reserva);
 	}
 
 }

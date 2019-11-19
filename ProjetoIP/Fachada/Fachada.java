@@ -61,8 +61,8 @@ public class Fachada {
 		this.horario.cadastrar(reserva);
 	}
 	
-	public boolean procurarReserva(Reserva reserva) {
-		return this.horario.procurar(reserva);
+	public boolean existe(Reserva reserva) {
+		return this.horario.existe(reserva);
 	}
 	
 	public void atualizarReserva(Reserva reserva, Reserva alterada) throws RNCException{
@@ -71,6 +71,10 @@ public class Fachada {
 	
 	public void deletarReserva(Reserva reserva) throws RNCException{
 		this.horario.deletar(reserva);
+	}
+	
+	public String procurarReserva(Reserva reserva) throws RNCException{
+		return this.horario.procurarReserva(reserva);
 	}
 }
 	
