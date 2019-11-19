@@ -1,5 +1,6 @@
 package pacoteClassesPessoa;
 //TESTEI ESSA PORRA
+//pessoa procura tudo por documento, que é a unica coisa que nao pode ser mudada (todo mundo so tem um cpf ou cnpj)
 import pacoteExcecoes.UFException;
 import pacoteExcecoes.UIException;
 

@@ -17,14 +17,14 @@ public class RepDemandaA implements RepositorioDemanda {
 	@Override
 	public Demanda inserir(Demanda demanda) throws EDException {
 		if (!this.existe(demanda) && this.indice < this.demandaArray.length) {
-			demanda.setCodigo(indice++);
+			demanda.setCodigo(indice++);//codigo usado depois
 			this.demandaArray[indice] = demanda;
 			this.indice++;
 			
 		} else {
 			throw new EDException();
 		}
-		return demanda;
+		return demanda; //retorna demanda pra poder ter o codigo, facilitar a procura do cliente 
 
 	}
 

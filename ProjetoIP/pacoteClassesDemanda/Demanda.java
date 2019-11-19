@@ -46,7 +46,7 @@ public class Demanda {
 	public void setCodigo (int codigo) {
 		this.codigo = codigo;
 	}
-	public boolean igual(Demanda demanda) {
+	public boolean igual(Demanda demanda) { // analisa se os dois codigos sao iguais pra mudar tudo 
 		if (this.codigo == demanda.codigo) {
 			return true;
 		} else {
