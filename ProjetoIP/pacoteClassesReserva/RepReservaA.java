@@ -89,7 +89,7 @@ public class RepReservaA implements RepositorioReserva {
 		else {
 			throw new RNCException();
 		}
-		return info;
+		return info; //oi
 	}
 	
 	

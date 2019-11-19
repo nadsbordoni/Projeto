@@ -81,7 +81,7 @@ public class RepReservaL implements RepositorioReserva {
 		} else {
 			throw new RNCException();
 		}
-		return info;
+		return info; //oi
 	}
 	
 //	public static void main(String[] args) throws HIException {
