@@ -6,36 +6,41 @@ import pacoteExcecoes.RNCException;
 
 public class NegocioReserva {
 	
-	RepositorioReserva horario;
+	private RepositorioReserva reserva;
 	
 	public NegocioReserva(int a) throws NOException {
 		if (a == 1) {
-			horario = new RepReservaL();
+			reserva = new RepReservaL();
 		} else if (a == 2) {
-			horario = new RepReservaA();
+			reserva = new RepReservaA();
 		} else {
 			throw new NOException();
 		}
 	}
 	
 	public void cadastrar(Reserva reserva) throws HIException {
-		this.horario.inserir(reserva);
+		this.reserva.inserir(reserva);
 	}
 
 	public boolean existe(Reserva reserva) {
-		return this.horario.existe(reserva);
+		return this.reserva.existe(reserva);
 	}
 
 	public void atualizar(Reserva reserva, Reserva alterada) throws RNCException{
-		this.horario.atualizar(reserva, alterada);
+		this.reserva.atualizar(reserva, alterada);
 	}
 
 	public void deletar(Reserva reserva) throws RNCException{
-		this.horario.remover(reserva);
+		this.reserva.remover(reserva);
 	}
 	
 	public String procurarReserva(Reserva reserva) throws RNCException{
-		return this.horario.procurarReserva(reserva);
+		return this.reserva.procurarReserva(reserva);
+	}
+	
+	public static void main(String[] args) throws NOException {
+		
 	}
 
 }
+
