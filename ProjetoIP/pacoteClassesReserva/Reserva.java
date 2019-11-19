@@ -87,20 +87,23 @@ public class Reserva {
 		
 	}
 	
-	/*
-	public boolean documentoIgual(Reserva reserva) { //talvez n
-		if(this.pessoa.getDocumento().equals(reserva.pessoa.getDocumento())) {
-			return true;
-		}
-		return false;
-	}/**/
-	
 	public boolean horaOk(Reserva reserva) {
 		boolean ok = false;
 		if (hora >= 9 && hora <= 18) {
 			ok = true;
 		}
 		return ok;
+	}
+/*
+	public boolean igualCodigo(Reserva reserva) {
+		if(this.getCodigo() == reserva.getCodigo()){
+			return true;
+		}
+		return false;
+	}
+/**/
+	public int getCodigo() {
+		return this.demanda.getCodigo();
 	}
 	
 	

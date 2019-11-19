@@ -41,13 +41,13 @@ public class RepReservaL implements RepositorioReserva {
 	}
 
 	@Override
-	public void remover(Reserva reserva) throws RNCException {
+	public void remover(int codigo) throws RNCException {
 		if (this.reserva != null) {
-			if (this.reserva.igualCompleto(reserva)) {
+			if (this.reserva.getCodigo()==codigo) {
 				this.reserva = this.proximo.reserva;
 				this.proximo = this.proximo.proximo;
 			} else {
-				this.proximo.remover(reserva);
+				this.proximo.remover(codigo);
 			}
 		} else {
 			throw new RNCException();
@@ -56,12 +56,12 @@ public class RepReservaL implements RepositorioReserva {
 	}
 
 	@Override
-	public void atualizar(Reserva reserva, Reserva alterada) throws RNCException {
+	public void atualizar(int codigo, Reserva alterada) throws RNCException {
 		if (this.reserva != null) {
-			if (this.reserva.igualCompleto(reserva)) {
+			if (this.reserva.getCodigo()==codigo) {
 				this.reserva = alterada;
 			} else {
-				this.proximo.atualizar(reserva, alterada);
+				this.proximo.atualizar(codigo, alterada);
 			}
 		} else {
 			throw new RNCException();
@@ -69,14 +69,14 @@ public class RepReservaL implements RepositorioReserva {
 	}
 
 	
-	public String procurarReserva(Reserva reserva) throws RNCException {
+	public String procurarReserva(int codigo) throws RNCException {
 		String info = "";
 		if (this.reserva != null) {
-			if (this.reserva.igualCompleto(reserva)) {
+			if (this.reserva.getCodigo()==codigo) {
 				info = this.reserva.getHora() + "\n" + this.reserva.getDia() //this mesmo?
 				+ "\n" + this.reserva.getMes() + "\n" + this.reserva.getAno();
 			} else {
-				this.proximo.procurarReserva(reserva);
+				this.proximo.procurarReserva(codigo);
 			}
 		} else {
 			throw new RNCException();

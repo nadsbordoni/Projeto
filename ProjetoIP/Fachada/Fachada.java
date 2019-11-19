@@ -65,16 +65,16 @@ public class Fachada {
 		return this.reserva.existe(reserva);
 	}
 	
-	public void atualizarReserva(Reserva reserva, Reserva alterada) throws RNCException{
-		this.reserva.atualizar(reserva, alterada);
+	public void atualizarReserva(int codigo, Reserva alterada) throws RNCException{
+		this.reserva.atualizar(codigo, alterada);
 	}
 	
-	public void deletarReserva(Reserva reserva) throws RNCException{
-		this.reserva.deletar(reserva);
+	public void deletarReserva(int codigo) throws RNCException{
+		this.reserva.deletar(codigo);
 	}
 	
-	public String procurarReserva(Reserva reserva) throws RNCException{
-		return this.reserva.procurarReserva(reserva);
+	public String procurarReserva(int codigo) throws RNCException{
+		return this.reserva.procurarReserva(codigo);
 	}
 }
 	

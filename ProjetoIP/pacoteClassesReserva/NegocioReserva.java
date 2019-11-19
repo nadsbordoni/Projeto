@@ -26,16 +26,16 @@ public class NegocioReserva {
 		return this.reserva.existe(reserva);
 	}
 
-	public void atualizar(Reserva reserva, Reserva alterada) throws RNCException{
-		this.reserva.atualizar(reserva, alterada);
+	public void atualizar(int codigo, Reserva alterada) throws RNCException{
+		this.reserva.atualizar(codigo, alterada);
 	}
 
-	public void deletar(Reserva reserva) throws RNCException{
-		this.reserva.remover(reserva);
+	public void deletar(int codigo) throws RNCException{
+		this.reserva.remover(codigo);
 	}
 	
-	public String procurarReserva(Reserva reserva) throws RNCException{
-		return this.reserva.procurarReserva(reserva);
+	public String procurarReserva(int codigo) throws RNCException{
+		return this.reserva.procurarReserva(codigo);
 	}
 	
 	public static void main(String[] args) throws NOException {
