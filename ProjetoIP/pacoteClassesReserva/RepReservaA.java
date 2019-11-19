@@ -47,10 +47,10 @@ public class RepReservaA implements RepositorioReserva {
 	}
 
 	@Override
-	public void remover(Reserva reserva) throws RNCException {
+	public void remover(Reserva reserva) throws RNCException {  //tem coisa estranha
 		if (this.existeCompleto(reserva)) {
 			int proc = this.indice(reserva);
-			for (int i = proc; i <= indice - 1; i++) {
+			for (int i = proc; i <= indice - 1; i++) {   
 				this.reserva[i] = this.reserva[i + 1];
 			}
 			this.indice--;
@@ -78,7 +78,7 @@ public class RepReservaA implements RepositorioReserva {
 
 
 	@Override
-	public String procurarReserva(Reserva reserva) throws RNCException {
+	public String procurarReserva(Reserva reserva) throws RNCException {   //tem coisa estranha 
 		String info = "";
 		if (this.existeCompleto(reserva)) {	
 			int proc = this.indice(reserva);
