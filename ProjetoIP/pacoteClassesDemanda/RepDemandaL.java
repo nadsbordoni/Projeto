@@ -1,4 +1,5 @@
 package pacoteClassesDemanda;
+
 //testado
 import pacoteClassesPessoa.PessoaFisica;
 import pacoteExcecoes.EDException;
@@ -8,34 +9,39 @@ public class RepDemandaL implements RepositorioDemanda {
 
 	private Demanda demanda;
 	private RepDemandaL proximo;
+	private int codigo = 1;
 
 	public RepDemandaL() {
 		this.demanda = null;
 		this.proximo = null;
+
 	}
 
 	@Override
-	public void inserir(Demanda demanda) throws EDException{
+	public Demanda inserir(Demanda demanda) throws EDException {
 		if (!this.existe(demanda)) {
 			if (this.demanda == null) {
+				demanda.setCodigo(codigo);
 				this.demanda = demanda;
 				this.proximo = new RepDemandaL();
+				this.proximo.codigo = this.codigo + 1;
 			} else {
 				this.proximo.inserir(demanda);
 			}
 		} else {
 			throw new EDException();
 		}
+		return demanda;
 	}
 
 	@Override
-	public void remover(Demanda demanda) throws NDException {
+	public void remover(int codigo) throws NDException {
 		if (this.demanda != null) {
-			if (this.demanda.equals(demanda)) {
+			if (this.demanda.getCodigo() == (demanda.getCodigo())) {
 				this.demanda = this.proximo.demanda;
 				this.proximo = this.proximo.proximo;
 			} else {
-				this.proximo.remover(demanda);
+				this.proximo.remover(codigo);
 			}
 		} else {
 			throw new NDException();
@@ -43,12 +49,12 @@ public class RepDemandaL implements RepositorioDemanda {
 	}
 
 	@Override
-	public void atualizar(Demanda demanda, Demanda nova) throws NDException {
+	public void atualizar(int codigo, Demanda nova) throws NDException {
 		if (this.demanda != null) {
-			if (this.demanda.igual(demanda)) {
+			if (this.demanda.getCodigo() == (demanda.getCodigo())) {
 				this.demanda = nova;
 			} else {
-				this.proximo.atualizar(demanda, nova);
+				this.proximo.atualizar(codigo, nova);
 			}
 		} else {
 			throw new NDException();
@@ -57,13 +63,13 @@ public class RepDemandaL implements RepositorioDemanda {
 	}
 
 	@Override
-	public Demanda procurarDemanda(Demanda demanda) throws NDException {
+	public Demanda procurarDemanda(int codigo) throws NDException {
 		Demanda aux = null;
 		if (this.demanda != null) {
-			if (this.demanda.equals(demanda)) {
+			if (this.demanda.getCodigo() == codigo) {
 				aux = this.demanda;
 			} else {
-				aux = this.proximo.procurarDemanda(demanda);
+				aux = this.proximo.procurarDemanda(codigo);
 			}
 		} else {
 			throw new NDException();
@@ -76,7 +82,7 @@ public class RepDemandaL implements RepositorioDemanda {
 		boolean existe = false;
 		if (this.demanda == null)
 			return false;
-		if (this.demanda.equals(demanda)) {
+		if (this.demanda.getArea().equals(demanda.getArea()) && this.demanda.getPessoa().getDocumento().equals(demanda.getPessoa().getDocumento())) {
 			existe = true;
 		} else if (this.proximo != null) {
 			existe = this.proximo.existe(demanda);
@@ -85,5 +91,5 @@ public class RepDemandaL implements RepositorioDemanda {
 		}
 		return existe;
 	}
-	
+
 }
