@@ -78,7 +78,7 @@ public class RepReservaA implements RepositorioReserva {
 
 
 	@Override
-	public String procurarReserva(Reserva reserva) throws RNCException {   //tem coisa estranha 
+	public String procurarReserva(Reserva reserva) throws RNCException {  
 		String info = "";
 		if (this.existeCompleto(reserva)) {	
 			int proc = this.indice(reserva);
@@ -89,7 +89,7 @@ public class RepReservaA implements RepositorioReserva {
 		else {
 			throw new RNCException();
 		}
-		return info;
+		return info; //oi
 	}
 	
 	
