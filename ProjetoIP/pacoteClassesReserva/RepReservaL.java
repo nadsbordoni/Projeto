@@ -1,5 +1,6 @@
 package pacoteClassesReserva;
 
+
 import pacoteExcecoes.HIException;
 import pacoteExcecoes.RNCException;
 
@@ -71,7 +72,7 @@ public class RepReservaL implements RepositorioReserva {
 	public String procurarReserva(Reserva reserva) throws RNCException {
 		String info = "";
 		if (this.reserva != null) {
-			if (this.reserva.documentoIgual(reserva)) {
+			if (this.reserva.igualCompleto(reserva)) {
 				info = this.reserva.getHora() + "\n" + this.reserva.getDia() //this mesmo?
 				+ "\n" + this.reserva.getMes() + "\n" + this.reserva.getAno();
 			} else {
@@ -82,6 +83,15 @@ public class RepReservaL implements RepositorioReserva {
 		}
 		return info;
 	}
+	
+//	public static void main(String[] args) throws HIException {
+//		Scanner in = new Scanner (System.in);
+//		RepReservaL lista = new RepReservaL();
+//		
+//		PessoaFisica p = new PessoaFisica("Joao", "4324", "234234", "234234");
+//		Reserva reserva = new Reserva(9, 20, 2, 2019, p);
+//		lista.inserir(reserva);
+//	}
 
 
 }
