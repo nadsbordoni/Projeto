@@ -17,20 +17,20 @@ public class NegocioDemanda {
 			throw new NOException();
 		}
 	}
-	public void cadastrar(Demanda demanda) throws EDException{
-		this.demandas.inserir(demanda);
+	public Demanda cadastrar(Demanda demanda) throws EDException{
+		return this.demandas.inserir(demanda);
 	}
 
-	public void remover(Demanda demanda) throws NDException{
-		this.demandas.remover(demanda);
+	public void deletar(int codigo) throws NDException{
+		this.demandas.remover(codigo);
 	}
 
-	public void atualizarDemanda(Demanda demanda, Demanda nova) throws NDException{
-		this.demandas.atualizar(demanda, nova);
+	public void atualizarDemanda(int codigo, Demanda nova) throws NDException{
+		this.demandas.atualizar(codigo, nova);
 	}
 
-	public Demanda procurarDemanda(Demanda demanda) throws NDException{
-		return this.demandas.procurarDemanda(demanda);
+	public Demanda procurarDemanda(int codigo) throws NDException{
+		return this.demandas.procurarDemanda(codigo);
 	}
 	
 	public boolean existe (Demanda demanda) {

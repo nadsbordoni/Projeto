@@ -5,12 +5,13 @@ import pacoteClassesPessoa.*;
 public class Demanda {
 	private Pessoa pessoa;
 	private String area;
-	private String demanda;
-
-	Demanda(Pessoa pessoa, String area, String demanda) {
+	private String resumo;
+	private int codigo;
+	
+	public Demanda(Pessoa pessoa, String area, String resumo) {
 		this.pessoa = pessoa;
 		this.area = area;
-		this.demanda = demanda;
+		this.resumo = resumo;
 
 	}
 
@@ -22,12 +23,12 @@ public class Demanda {
 		this.area = area;
 	}
 
-	public String getDemanda() {
-		return demanda;
+	public String getResumo() {
+		return resumo;
 	}
 
-	public void setDemanda(String demanda) {
-		this.demanda = demanda;
+	public void setResumo(String resumo) {
+		this.resumo = resumo;
 	}
 
 	public Pessoa getPessoa() {
@@ -37,9 +38,16 @@ public class Demanda {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
-
+	
+	public int getCodigo() {
+		return this.codigo;
+	}
+	
+	public void setCodigo (int codigo) {
+		this.codigo = codigo;
+	}
 	public boolean igual(Demanda demanda) {
-		if (this.pessoa == demanda.pessoa) {
+		if (this.codigo == demanda.codigo) {
 			return true;
 		} else {
 			return false;

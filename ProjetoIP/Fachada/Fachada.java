@@ -19,7 +19,7 @@ public class Fachada {
 		this.people.cadastrar(pessoa);
 	}
 
-	public boolean existePesspa(String documento) {
+	public boolean existePessoa(String documento) {
 		return this.people.existe(documento);
 	}
 
@@ -35,21 +35,21 @@ public class Fachada {
 		return this.people.procurarPessoa(documento);
 	}
 //Demanda
-	public void cadastrarDemanda(Demanda demanda) throws EDException{
-		this.demanda.cadastrar(demanda);
+	public Demanda cadastrarDemanda(Demanda demanda) throws EDException{
+		return this.demanda.cadastrar(demanda);
 	}
 
-	public void removerDemanda(Demanda demanda) throws NDException{
-		this.demanda.remover(demanda);
+	public void deletarDemanda(int codigo) throws NDException{
+		this.demanda.deletar(codigo);
 	}
 
-	public void atualizarDemanda(Demanda demanda, Demanda nova) throws NDException{
-		this.demanda.atualizarDemanda(demanda, nova);
+	public void atualizarDemanda(int codigo, Demanda nova) throws NDException{
+		this.demanda.atualizarDemanda(codigo, nova);
 	}
 
-	public Demanda procurarDemanda(Demanda demanda)
+	public Demanda procurarDemanda(int codigo)
 			throws NDException{
-		return this.demanda.procurarDemanda(demanda);
+		return this.demanda.procurarDemanda(codigo);
 	}
 	
 	public boolean existe (Demanda demanda) {
