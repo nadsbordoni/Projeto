@@ -36,26 +36,26 @@ public class Main {
 							in.nextLine();
 							switch (tipopessoa) {
 							case 1:
-								System.out.print("Digite o nome:");
+								System.out.print("Digite o nome: ");
 								String nome = in.nextLine();
-								System.out.print("Digite o endereço:");
+								System.out.print("Digite o endereço: ");
 								String zipcode = in.nextLine();
-								System.out.print("Digite o telefone:");
+								System.out.print("Digite o telefone: ");
 								String telefone = in.nextLine();
-								System.out.print("Digite o CPF:");
+								System.out.print("Digite o CPF: ");
 								String CPF = in.nextLine();
 								PessoaFisica pessoa = new PessoaFisica(nome, zipcode, telefone, CPF);
 								fachada.cadastrarPessoa(pessoa);
 								System.out.println("Pessoa cadastrada com sucesso!");
 								break;
 							case 2:
-								System.out.print("Digite o nome:");
+								System.out.print("Digite o nome: ");
 								nome = in.nextLine();
-								System.out.print("Digite o endereço:");
+								System.out.print("Digite o endereço: ");
 								zipcode = in.nextLine();
-								System.out.print("Digite o telefone:");
+								System.out.print("Digite o telefone: ");
 								telefone = in.nextLine();
-								System.out.print("Digite o CNPJ:");
+								System.out.print("Digite o CNPJ: ");
 								String CNPJ = in.nextLine();
 								PessoaJuridica empresa = new PessoaJuridica(nome, zipcode, telefone, CNPJ);
 								fachada.cadastrarPessoa(empresa);
@@ -64,7 +64,7 @@ public class Main {
 							}
 							break;
 						case 2:
-							System.out.print("Digite CPF ou CNPJ, por favor:");
+							System.out.print("Digite CPF ou CNPJ, por favor: ");
 							String documento = in.nextLine();
 							Pessoa pessoa = fachada.procurarPessoa(documento);
 							System.out.println("Pessoa encontrada. O nome dela é " + pessoa.getNome());
@@ -75,28 +75,28 @@ public class Main {
 							in.nextLine();
 							switch (atualizar) {
 							case 1:
-								System.out.print("Digite CPF de Pessoa Física já cadastrada:");
+								System.out.print("Digite CPF de Pessoa Física já cadastrada: ");
 								String doc = in.nextLine();
 								PessoaFisica person = (PessoaFisica) fachada.procurarPessoa(doc);
-								System.out.print("Digite o nome que gostaria de atualizar:");
+								System.out.print("Digite o nome que gostaria de atualizar: ");
 								String nome = in.nextLine();
-								System.out.print("Digite o endereço que gostaria de atualizar:");
+								System.out.print("Digite o endereço que gostaria de atualizar: ");
 								String zipcode = in.nextLine();
-								System.out.print("Digite o telefone que gostaria de atualizar:");
+								System.out.print("Digite o telefone que gostaria de atualizar: ");
 								String telefone = in.nextLine();
 								PessoaFisica personnova = new PessoaFisica(nome, zipcode, telefone, doc);
 								fachada.atualizarPessoa(person, personnova);
 								System.out.println("Pessoa atualizada com sucesso!");
 								break;
 							case 2:
-								System.out.print("Digite CNPJ de Pessoa Física já cadastrada:");
+								System.out.print("Digite CNPJ de Pessoa Física já cadastrada: ");
 								doc = in.nextLine();
 								PessoaJuridica empresa = (PessoaJuridica) fachada.procurarPessoa(doc);
-								System.out.print("Digite o nome que gostaria de atualizar:");
+								System.out.print("Digite o nome que gostaria de atualizar: ");
 								nome = in.nextLine();
-								System.out.print("Digite o endereço que gostaria de atualizar:");
+								System.out.print("Digite o endereço que gostaria de atualizar: ");
 								zipcode = in.nextLine();
-								System.out.print("Digite o telefone que gostaria de atualizar:");
+								System.out.print("Digite o telefone que gostaria de atualizar: ");
 								telefone = in.nextLine();
 								PessoaJuridica empresanova = new PessoaJuridica(nome, zipcode, telefone, doc);
 								fachada.atualizarPessoa(empresa, empresanova);
@@ -105,7 +105,7 @@ public class Main {
 							}
 							break;
 						case 4:
-							System.out.print("Digite o CPF ou CNPJ da pessoa que gostaria de deletar:");
+							System.out.print("Digite o CPF ou CNPJ da pessoa que gostaria de deletar: ");
 							String docprocurar = in.nextLine();
 							Pessoa pessoa1 = fachada.procurarPessoa(docprocurar);
 							fachada.deletarPessoa(pessoa1);
@@ -120,7 +120,7 @@ public class Main {
 						in.nextLine();
 						switch (escolha) {
 						case 1:
-							System.out.print("Digite CPF ou CNPJ de pessoa já cadastrada para adicionar a Lide:");
+							System.out.print("Digite CPF ou CNPJ de pessoa já cadastrada para adicionar a Lide: ");
 							String doc = in.nextLine();
 							Pessoa pessoa = fachada.procurarPessoa(doc);
 							System.out.print("Digite área do Direito em que se enquadra sua Lide: ");
@@ -136,7 +136,10 @@ public class Main {
 							int codigoprocurar = in.nextInt();
 							in.nextLine();
 							Demanda procurada = fachada.procurarDemanda(codigoprocurar);
-							System.out.println("Lide encontrada. A área é " + procurada.getArea() + " e esta no nome de : " + procurada.getPessoa().getNome());
+							System.out.println("Lide encontrada. A área é " + procurada.getArea() + " e esta no nome de: " + procurada.getPessoa().getNome());
+							break;
+						//case 3
+						//case 4
 							
 						}
 					}
