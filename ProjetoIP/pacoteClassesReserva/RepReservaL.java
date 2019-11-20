@@ -15,21 +15,18 @@ public class RepReservaL implements RepositorioReserva {
 	}
 
 	@Override
-	public void inserir(Reserva reserva) throws HIException { 
+	public void inserir(Reserva reserva)  { 
 		if (this.proximo == null) {
-			if (!this.existe(reserva) && reserva.horaOk(reserva)) {
 				this.reserva = reserva;
 				this.proximo = new RepReservaL();
-			} else if (this.existe(reserva) || !reserva.horaOk(reserva)) {
-				throw new HIException();
-			}
-		} else {
+			
+		} else if(this.proximo!=null) {
 			this.proximo.inserir(reserva);
 		}
 	}
 
 	@Override
-	public boolean existe(Reserva reserva) {
+	public boolean existe(Reserva reserva) {//ok
 		if (this.reserva != null) {
 			if (this.reserva.igual(reserva)) {
 				return true;
@@ -41,13 +38,13 @@ public class RepReservaL implements RepositorioReserva {
 	}
 
 	@Override
-	public void remover(Reserva reserva) throws RNCException {
+	public void remover(int codigo) throws RNCException {
 		if (this.reserva != null) {
-			if (this.reserva.igualCompleto(reserva)) {
+			if (this.reserva.getCodigo()==codigo) {
 				this.reserva = this.proximo.reserva;
 				this.proximo = this.proximo.proximo;
 			} else {
-				this.proximo.remover(reserva);
+				this.proximo.remover(codigo);
 			}
 		} else {
 			throw new RNCException();
@@ -56,12 +53,12 @@ public class RepReservaL implements RepositorioReserva {
 	}
 
 	@Override
-	public void atualizar(Reserva reserva, Reserva alterada) throws RNCException {
+	public void atualizar(int codigo, Reserva alterada) throws RNCException {
 		if (this.reserva != null) {
-			if (this.reserva.igualCompleto(reserva)) {
+			if (this.reserva.getCodigo()==codigo) {
 				this.reserva = alterada;
 			} else {
-				this.proximo.atualizar(reserva, alterada);
+				this.proximo.atualizar(codigo, alterada);
 			}
 		} else {
 			throw new RNCException();
@@ -69,14 +66,15 @@ public class RepReservaL implements RepositorioReserva {
 	}
 
 	
-	public String procurarReserva(Reserva reserva) throws RNCException {
+	public String procurarReserva(int codigo) throws RNCException {
 		String info = "";
 		if (this.reserva != null) {
-			if (this.reserva.igualCompleto(reserva)) {
-				info = this.reserva.getHora() + "\n" + this.reserva.getDia() //this mesmo?
-				+ "\n" + this.reserva.getMes() + "\n" + this.reserva.getAno();
-			} else {
-				this.proximo.procurarReserva(reserva);
+			if (this.reserva.getCodigo()==codigo) {
+				info = "hora: "+this.reserva.getHora() + "\ndia: " + this.reserva.getDia() //this mesmo?
+				+ "\nmes: " + this.reserva.getMes() + "\nano: " + this.reserva.getAno();
+				return info;
+			} else if(this.proximo!=null){
+				return this.proximo.procurarReserva(codigo);
 			}
 		} else {
 			throw new RNCException();
@@ -84,14 +82,21 @@ public class RepReservaL implements RepositorioReserva {
 		return info; //oi
 	}
 	
-//	public static void main(String[] args) throws HIException {
-//		Scanner in = new Scanner (System.in);
-//		RepReservaL lista = new RepReservaL();
-//		
-//		PessoaFisica p = new PessoaFisica("Joao", "4324", "234234", "234234");
-//		Reserva reserva = new Reserva(9, 20, 2, 2019, p);
-//		lista.inserir(reserva);
-//	}
+	
+	
+	
 
+	@Override
+	public boolean existe(int codigo) {
+		if (this.reserva != null) {
+			if (this.reserva.getCodigo()==codigo) {
+				return true;
+			} else
+				return this.proximo.existe(codigo);
+		} else {
+			return false;
+		}
+	}
+	
 
 }

@@ -8,11 +8,11 @@ import pacoteClassesDemanda.*;
 public class Fachada {
 	private NegocioPessoa people;
 	private NegocioDemanda demanda;
-	private NegocioReserva horario;
+	private NegocioReserva reserva;
  	public Fachada (int escolha) throws NOException {
  		this.people = new NegocioPessoa(escolha);
  		this.demanda = new NegocioDemanda(escolha);
- 		this.horario = new NegocioReserva(escolha);
+ 		this.reserva = new NegocioReserva(escolha);
  	}
 //Pessoa
  	public void cadastrarPessoa(Pessoa pessoa) throws UFException {
@@ -58,23 +58,27 @@ public class Fachada {
 
 //Reserva
 	public void cadastrarReserva(Reserva reserva) throws HIException {
-		this.horario.cadastrar(reserva);
+		this.reserva.cadastrar(reserva);
 	}
 	
 	public boolean existe(Reserva reserva) {
-		return this.horario.existe(reserva);
+		return this.reserva.existe(reserva);
 	}
 	
-	public void atualizarReserva(Reserva reserva, Reserva alterada) throws RNCException{
-		this.horario.atualizar(reserva, alterada);
+	public boolean existe(int codigo) {
+		return this.reserva.existe(codigo);
 	}
 	
-	public void deletarReserva(Reserva reserva) throws RNCException{
-		this.horario.deletar(reserva);
+	public void atualizarReserva(int codigo, Reserva alterada) throws RNCException{
+		this.reserva.atualizar(codigo, alterada);
 	}
 	
-	public String procurarReserva(Reserva reserva) throws RNCException{
-		return this.horario.procurarReserva(reserva);
+	public void deletarReserva(int codigo) throws RNCException{
+		this.reserva.deletar(codigo);
+	}
+	
+	public String procurarReserva(int codigo) throws RNCException{
+		return this.reserva.procurarReserva(codigo);
 	}
 }
 	

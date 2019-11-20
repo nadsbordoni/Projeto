@@ -4,7 +4,7 @@ import pacoteExcecoes.HIException;
 import pacoteExcecoes.RNCException;
 
 public class RepReservaA implements RepositorioReserva {
-	
+
 	private Reserva[] reserva;
 	private int indice;
 
@@ -12,18 +12,12 @@ public class RepReservaA implements RepositorioReserva {
 		reserva = new Reserva[100];
 		indice = 0;
 	}
-	
+
 	@Override
-	public void inserir(Reserva reserva) throws HIException {
-		if (!this.existe(reserva) && reserva.horaOk(reserva)) {
-			this.reserva[this.indice] = reserva;
-			this.indice++;
-		} else {
-			throw new HIException();
-		}
-		
-		
-}
+	public void inserir(Reserva reserva) {
+		this.reserva[this.indice] = reserva;
+		this.indice++;
+	}
 
 	@Override
 	public boolean existe(Reserva reserva) {
@@ -35,11 +29,11 @@ public class RepReservaA implements RepositorioReserva {
 		}
 		return resposta;
 	}
-	
-	public boolean existeCompleto(Reserva reserva) {
+
+	public boolean existeCompleto(int codigo) {
 		boolean resposta = false;
 		for (int a = 0; a < indice && !resposta; a++) {
-			if (this.reserva[a].igualCompleto(reserva)) {
+			if (this.reserva[a].getCodigo() == codigo) {
 				resposta = true;
 			}
 		}
@@ -47,10 +41,10 @@ public class RepReservaA implements RepositorioReserva {
 	}
 
 	@Override
-	public void remover(Reserva reserva) throws RNCException { 
-		if (this.existeCompleto(reserva)) {
-			int proc = this.indice(reserva);
-			for (int i = proc; i <= indice - 1; i++) {   
+	public void remover(int codigo) throws RNCException {
+		if (this.existeCompleto(codigo)) {
+			int proc = this.indice(codigo);
+			for (int i = proc; i <= indice - 1; i++) {
 				this.reserva[i] = this.reserva[i + 1];
 			}
 			this.indice--;
@@ -58,40 +52,44 @@ public class RepReservaA implements RepositorioReserva {
 			throw new RNCException();
 		}
 	}
-	
-	public int indice(Reserva reserva) throws RNCException {
+
+	public int indice(int codigo) throws RNCException {
 		for (int i = 0; i < 100; i++) {
-			if (this.reserva[i] != null && this.reserva[i].igual(reserva)) {  
+			if (this.reserva[i] != null && this.reserva[i].getCodigo() == codigo) {
 				return i;
 			}
 
 		}
 		throw new RNCException();
 	}
-	
+
 	@Override
-	public void atualizar(Reserva reserva, Reserva alterada) throws RNCException {
-		int proc = this.indice(reserva);
+	public void atualizar(int codigo, Reserva alterada) throws RNCException {
+		int proc = this.indice(codigo);
 		this.reserva[proc] = alterada;
-		
-	}
 
+	}
 
 	@Override
-	public String procurarReserva(Reserva reserva) throws RNCException {  
+	public String procurarReserva(int codigo) throws RNCException {
 		String info = "";
-		if (this.existeCompleto(reserva)) {	
-			int proc = this.indice(reserva);
-			info = this.reserva[proc].getHora() + "\n" + this.reserva[proc].getDia() 
-			+ "\n" + this.reserva[proc].getMes() + "\n" + this.reserva[proc].getAno();
 
-		}
-		else {
-			throw new RNCException();
-		}
-		return info; //oi
+		int proc = this.indice(codigo);
+		info = "hora: "+this.reserva[proc].getHora() + "\ndia: " + this.reserva[proc].getDia() + "\nmes: " + this.reserva[proc].getMes()
+				+ "\nano: " + this.reserva[proc].getAno();
+
+		return info; // oi
 	}
-	
-	
+
+	@Override
+	public boolean existe(int codigo) {
+		boolean resposta = false;
+		for (int a = 0; a < indice && !resposta; a++) {
+			if (this.reserva[a].getCodigo()==codigo) {
+				resposta = true;
+			}
+		}
+		return resposta;
+	}
 
 }
