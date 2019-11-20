@@ -129,19 +129,39 @@ public class Main {
 							String demanda = in.nextLine();
 							Demanda lide = new Demanda(pessoa, area, demanda);
 							int codigo = fachada.cadastrarDemanda(lide).getCodigo();
-							System.out.println("Demanda cadastrada com sucesso! O Codigo da sua demanda é " + codigo);
+							System.out.println("Lide cadastrada com sucesso! O Codigo do seu processo é " + codigo);
 							break;
 						case 2:
-							System.out.print("Digite o código da Lide: ");
+							System.out.print("Digite o código da Lide já cadastrada: ");
 							int codigoprocurar = in.nextInt();
 							in.nextLine();
 							Demanda procurada = fachada.procurarDemanda(codigoprocurar);
 							System.out.println("Lide encontrada. A área é " + procurada.getArea() + " e esta no nome de: " + procurada.getPessoa().getNome());
 							break;
-						//case 3
-						//case 4
-							
+						case 3:
+							System.out.print("Digite o código da Lide já cadastrada: ");
+							int codigoatualizar = in.nextInt();						
+							in.nextLine(); 
+							Demanda antiga = fachada.procurarDemanda(codigoatualizar);
+							System.out.print("Digite a nova área do Direito para sua Demanda: ");
+							String area1 = in.nextLine();
+							System.out.print("Digite o novo tipo de causa: ");
+							String causa = in.nextLine();
+							Demanda atualizar = new Demanda(antiga.getPessoa(), area1, causa);
+							fachada.atualizarDemanda(codigoatualizar, atualizar);
+							System.out.println("Lide atualizada com sucesso!");
+							break;
+						case 4:
+							System.out.println("Digite o código da Lide já cadastrada:");	
+							int codigodeletar = in.nextInt();
+							in.nextLine();
+							fachada.deletarDemanda(codigodeletar);
+							System.out.print("Exclusão efetuada.");
 						}
+						break;
+					case 3:
+						System.out.println(
+								"Você deseja: Inserir Demanda(1), Procurar Demanda(2), Atualizar dados da Demanda(3), Deletar Demanda(4)");
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

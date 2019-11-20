@@ -5,7 +5,7 @@ import pacoteClassesPessoa.*;
 public class Demanda {
 	private Pessoa pessoa;
 	private String area;
-	private String resumo;
+	private String resumo;//assunto tratado, como : batida de carro, roubo.
 	private int codigo;
 	
 	public Demanda(Pessoa pessoa, String area, String resumo) {
