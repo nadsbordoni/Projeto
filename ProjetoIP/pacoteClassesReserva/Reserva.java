@@ -87,9 +87,9 @@ public class Reserva {
 		
 	}
 	
-	public boolean horaOk(Reserva reserva) {
+	public boolean horaOk() {
 		boolean ok = false;
-		if (hora >= 9 && hora <= 18) {
+		if (this.hora >= 9 && this.hora <= 18) {
 			ok = true;
 		}
 		return ok;

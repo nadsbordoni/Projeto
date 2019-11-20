@@ -14,14 +14,9 @@ public class RepReservaA implements RepositorioReserva {
 	}
 
 	@Override
-	public void inserir(Reserva reserva) throws HIException {
-		if (!this.existe(reserva) && reserva.horaOk(reserva)) {
-			this.reserva[this.indice] = reserva;
-			this.indice++;
-		} else {
-			throw new HIException();
-		}
-
+	public void inserir(Reserva reserva) {
+		this.reserva[this.indice] = reserva;
+		this.indice++;
 	}
 
 	@Override
@@ -80,10 +75,21 @@ public class RepReservaA implements RepositorioReserva {
 		String info = "";
 
 		int proc = this.indice(codigo);
-		info = this.reserva[proc].getHora() + "\n" + this.reserva[proc].getDia() + "\n" + this.reserva[proc].getMes()
-				+ "\n" + this.reserva[proc].getAno();
+		info = "hora: "+this.reserva[proc].getHora() + "\ndia: " + this.reserva[proc].getDia() + "\nmes: " + this.reserva[proc].getMes()
+				+ "\nano: " + this.reserva[proc].getAno();
 
 		return info; // oi
+	}
+
+	@Override
+	public boolean existe(int codigo) {
+		boolean resposta = false;
+		for (int a = 0; a < indice && !resposta; a++) {
+			if (this.reserva[a].getCodigo()==codigo) {
+				resposta = true;
+			}
+		}
+		return resposta;
 	}
 
 }

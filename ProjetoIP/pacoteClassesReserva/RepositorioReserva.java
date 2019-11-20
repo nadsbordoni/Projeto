@@ -16,6 +16,8 @@ public interface RepositorioReserva {
 	
 	public boolean existe(Reserva reserva); //deixei reserva e nao codigo pois a interface de repositorio da demanda tava assim
 
+	public boolean existe(int codigo);//agr tem um existe por codigo tbm, pois o procurar usa codigo e nao reserva
+
 
 
 
