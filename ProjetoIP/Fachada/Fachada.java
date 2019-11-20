@@ -69,7 +69,7 @@ public class Fachada {
 		return this.reserva.existe(codigo);
 	}
 	
-	public void atualizarReserva(int codigo, Reserva alterada) throws RNCException{
+	public void atualizarReserva(int codigo, Reserva alterada) throws RNCException, HIException{
 		this.reserva.atualizar(codigo, alterada);
 	}
 	
