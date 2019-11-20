@@ -20,13 +20,13 @@ public class Main {
 					int menu = in.nextInt();
 					in.nextLine();
 					if (menu == 0) {
-						System.out.println("Obrigado. Esperamos ter ajudado!");
+						System.out.println("Obrigado(a). Esperamos ter ajudado!");
 						break;
 					}
 					switch (menu) {
 					case 1:
 						System.out.println(
-								"Você deseja: Inserir Pessoa(1), Procurar Pessoa(2), Atualizar dados de Pessoa(3), Deletar Pessoa(4)");
+								"Você deseja: Cadastrar Pessoa(1), Procurar Pessoa(2), Atualizar dados de Pessoa(3), Deletar Pessoa(4)");
 						int escolha = in.nextInt();
 						in.nextLine();
 						switch (escolha) {
@@ -115,15 +115,15 @@ public class Main {
 						break;
 					case 2:
 						System.out.println(
-								"Você deseja: Inserir Demanda(1), Procurar Demanda(2), Atualizar dados da Demanda(3), Deletar Demanda(4)");
+								"Você deseja: Cadastrar Demanda(1), Procurar Demanda(2), Atualizar dados da Demanda(3), Deletar Demanda(4)");
 						escolha = in.nextInt();
 						in.nextLine();
 						switch (escolha) {
 						case 1:
-							System.out.print("Digite CPF ou CNPJ de pessoa já cadastrada para adicionar a Lide: ");
+							System.out.print("Digite CPF ou CNPJ de pessoa já cadastrada para adicionar o seu Problema: ");
 							String doc = in.nextLine();
 							Pessoa pessoa = fachada.procurarPessoa(doc);
-							System.out.print("Digite área do Direito em que se enquadra sua Lide: ");
+							System.out.print("Digite área do Direito em que se enquadra seu problema: ");
 							String area = in.nextLine();
 							System.out.print("Digite tipo de causa: ");
 							String demanda = in.nextLine();
@@ -161,7 +161,37 @@ public class Main {
 						break;
 					case 3:
 						System.out.println(
-								"Você deseja: Inserir Demanda(1), Procurar Demanda(2), Atualizar dados da Demanda(3), Deletar Demanda(4)");
+								"Você deseja: Inserir Reserva(1), Procurar Reserva(2), Atualizar dados da Reserva(3), Deletar Reserva(4)");
+						escolha = in.nextInt();
+						in.nextLine();
+						switch (escolha) {
+						case 1:
+							System.out.print("Digite o código da Lide já cadastrada: ");
+							int codigo = in.nextInt();
+							in.nextLine();
+							Demanda demanda = fachada.procurarDemanda(codigo);
+							System.out.print("Digite um dia útil para agendar sua Lide (ex: 21/11/2019): ");
+							String data = in.nextLine();
+							String [] dividir = data.split("/");
+							int dia = Integer.parseInt(dividir[0]);
+							int mes = Integer.parseInt(dividir[1]);
+							int ano = Integer.parseInt(dividir[2]);
+							System.out.println("O funcionamento da nossa sede ocorre das 9 da manhã as 18 da noite. Cada consulta com a Defensoria tem a duração de uma hora.");
+							System.out.print("Digite uma hora para sua Reserva (ex: 9): ");
+							int hora = in.nextInt();
+							Reserva reserva = new Reserva(hora, dia, mes, ano, demanda);
+							fachada.cadastrarReserva(reserva);
+							System.out.println("Pronto! Sua reserva foi efetuada com sucesso. Agora é so aguardar o dia do atendimento.");
+							System.out.println("Não se esqueça de anotar o código da sua reserva, é essencial para nos auxiliar no seu atendimento.");
+							System.out.println("Seu código é: " + codigo);
+							break;
+						case 2:
+							//procurar reserva
+						case 3:
+							//atualizar reserva
+						case 4:
+							//deletar reserva
+						}
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

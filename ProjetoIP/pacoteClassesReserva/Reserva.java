@@ -3,20 +3,18 @@ package pacoteClassesReserva;
 import pacoteClassesPessoa.Pessoa;
 import pacoteClassesDemanda.Demanda;
 
-public class Reserva {
-	private Pessoa pessoa; 
+public class Reserva { 
 	private Demanda demanda;
 	private int hora;
 	private int dia;
 	private int mes;
 	private int ano;
 
-	Reserva(int hora, int dia, int mes, int ano, Pessoa pessoa, Demanda demanda) {
+	public Reserva(int hora, int dia, int mes, int ano, Demanda demanda) {
 		this.hora = hora;
 		this.dia = dia;
 		this.mes = mes;
 		this.ano = ano;
-		this.pessoa = pessoa;
 		this.demanda = demanda;
 	}
 
@@ -52,13 +50,6 @@ public class Reserva {
 		this.ano = ano;
 	}
 
-	public Pessoa getPessoa() { 
-		return this.pessoa;
-	}
-
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
 	
 	public Demanda getDemanda() {
 		return this.demanda;
@@ -79,8 +70,7 @@ public class Reserva {
 	
 	public boolean igualCompleto(Reserva reserva) {
 		if(this.mes == reserva.getMes() && this.hora == reserva.getHora() && this.dia == reserva.getDia() 
-				&& this.ano == reserva.getAno() && this.pessoa.igual(reserva.pessoa) 
-				&& this.demanda.igual(reserva.demanda)) {
+				&& this.ano == reserva.getAno() && this.demanda.igual(reserva.demanda)) {
 			return true;
 		}
 		return false;

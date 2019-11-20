@@ -1,6 +1,5 @@
 package pacoteClassesReserva;
 
-import pacoteExcecoes.HIException;
 import pacoteExcecoes.RNCException;
 
 public class RepReservaA implements RepositorioReserva {
