@@ -1,6 +1,5 @@
 package pacoteClassesReserva;
 
-import pacoteClassesPessoa.Pessoa;
 import pacoteClassesDemanda.Demanda;
 
 public class Reserva { 

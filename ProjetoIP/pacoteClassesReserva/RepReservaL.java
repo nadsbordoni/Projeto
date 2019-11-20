@@ -77,7 +77,7 @@ public class RepReservaL implements RepositorioReserva {
 		} else {
 			throw new RNCException();
 		}
-		return info; //oi
+		return info; 
 	}
 	
 	

@@ -74,10 +74,10 @@ public class RepReservaA implements RepositorioReserva {
 		String info = "";
 
 		int proc = this.indice(codigo);
-		info = "horario: "+this.reserva[proc].getHora() +":00"+ "    ndia: " + this.reserva[proc].getDia() + "/" + this.reserva[proc].getMes()
+		info = "horario: "+this.reserva[proc].getHora() +":00"+ "    data: " + this.reserva[proc].getDia() + "/" + this.reserva[proc].getMes()
 				+ "/" + this.reserva[proc].getAno();
 
-		return info; // oi
+		return info; 
 	}
 
 	@Override
