@@ -1,5 +1,5 @@
 package pacoteClassesPessoa;
-//TESTEI ESSA PORRA
+//Testado
 //pessoa procura tudo por documento, que é a unica coisa que nao pode ser mudada (todo mundo so tem um cpf ou cnpj)
 import pacoteExcecoes.UFException;
 import pacoteExcecoes.UIException;
@@ -67,7 +67,7 @@ public class RepPessoaA implements RepositorioPessoa {
 		}
 	}
 
-	public int indice(String documento) throws UIException {
+	public int indice(String documento) throws UIException { //metodo so de array, pra poder atualizar
 		int ind = 0;
 		boolean tem = false;
 

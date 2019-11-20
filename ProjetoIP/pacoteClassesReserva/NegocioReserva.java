@@ -43,7 +43,6 @@ public class NegocioReserva {
 	
 	public String procurarReserva(int codigo) throws RNCException{//pkok
 		if(!this.reservas.existe(codigo)) throw new RNCException();
-		System.out.println("existe o " + codigo);
 		return this.reservas.procurarReserva(codigo);
 	}
 	/*

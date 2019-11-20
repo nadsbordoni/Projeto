@@ -1,7 +1,6 @@
 package pacoteClassesDemanda;
 
-//testado
-import pacoteClassesPessoa.PessoaFisica;
+import pacoteClassesPessoa.*;
 import pacoteExcecoes.EDException;
 import pacoteExcecoes.NDException;
 
@@ -78,7 +77,10 @@ public class RepDemandaL implements RepositorioDemanda {
 	}
 
 	@Override
-	public boolean existe(Demanda demanda) {
+	public boolean existe(Demanda demanda) { 
+		/* uma pessoa pode ter varias demandas, até porque varios problemas ocorrem no dia a dia;
+		 * mas nao pode a mesma pessoa, cadastrar o mesmo problema duas vezes, porque estaria tirando a vaga de outra pessoa;
+		 */
 		boolean existe = false;
 		if (this.demanda == null)
 			return false;

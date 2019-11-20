@@ -69,8 +69,7 @@ public class RepReservaL implements RepositorioReserva {
 		String info = "";
 		if (this.reserva != null) {
 			if (this.reserva.getCodigo()==codigo) {
-				info = "hora: "+this.reserva.getHora() + "\ndia: " + this.reserva.getDia() //this mesmo?
-				+ "\nmes: " + this.reserva.getMes() + "\nano: " + this.reserva.getAno();
+				info = "horário: "+this.reserva.getHora() +":00" + "     data: " + this.reserva.getDia() + "/" + this.reserva.getMes() + "/" + this.reserva.getAno();
 				return info;
 			} else if(this.proximo!=null){
 				return this.proximo.procurarReserva(codigo);

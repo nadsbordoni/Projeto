@@ -1,6 +1,6 @@
 package pacoteClassesPessoa;
 
-public class PessoaFisica extends Pessoa {
+public class PessoaFisica extends Pessoa { // a diferença entre as pessoas é o documento (pessoa fisica é cpf, pessoa juridica CNPJ);
 	private String CPF;
 
 	public PessoaFisica(String nome, String zipcode, String telefone, String CPF) {

@@ -23,7 +23,7 @@ public abstract class Pessoa {
 		return this.telefone;
 	}
 
-	public String getDocumento() {
+	public String getDocumento() { //metodo abstrato
 		return null;
 	}
 
@@ -40,7 +40,7 @@ public abstract class Pessoa {
 
 	}
 
-	public boolean igual(Pessoa pessoa) {
+	public boolean igual(Pessoa pessoa) { //metodo abstrato
 		return false;
 	}
 

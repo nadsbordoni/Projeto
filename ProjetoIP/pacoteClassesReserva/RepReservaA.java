@@ -74,8 +74,8 @@ public class RepReservaA implements RepositorioReserva {
 		String info = "";
 
 		int proc = this.indice(codigo);
-		info = "hora: "+this.reserva[proc].getHora() + "\ndia: " + this.reserva[proc].getDia() + "\nmes: " + this.reserva[proc].getMes()
-				+ "\nano: " + this.reserva[proc].getAno();
+		info = "horario: "+this.reserva[proc].getHora() +":00"+ "    ndia: " + this.reserva[proc].getDia() + "/" + this.reserva[proc].getMes()
+				+ "/" + this.reserva[proc].getAno();
 
 		return info; // oi
 	}

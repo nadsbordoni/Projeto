@@ -1,6 +1,4 @@
 package pacoteClassesDemanda;
-//testei essa porra
-import pacoteClassesPessoa.*;
 import pacoteExcecoes.EDException;
 import pacoteExcecoes.NDException;
 
@@ -17,7 +15,7 @@ public class RepDemandaA implements RepositorioDemanda {
 	@Override
 	public Demanda inserir(Demanda demanda) throws EDException {
 		if (!this.existe(demanda) && this.indice < this.demandaArray.length) {
-			demanda.setCodigo(indice++);//codigo usado depois
+			demanda.setCodigo(indice + 1);//codigo usado depois (fachada)
 			this.demandaArray[indice] = demanda;
 			this.indice++;
 			
