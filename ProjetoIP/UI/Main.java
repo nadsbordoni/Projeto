@@ -18,8 +18,8 @@ public class Main {
 			while (true) {
 				try {
 					System.out.println("Gostaria de acessar Pessoas(1), Demanda(2), Reserva(3)? Se desejar sair do site, digite 0.");
-					String m = in.nextLine();
-					int menu = Integer.parseInt(m);
+					int menu = in.nextInt();
+					in.nextLine();
 					if (menu == 0) {
 						System.out.println("Obrigado(a). Esperamos ter ajudado!");
 						break;
@@ -28,13 +28,13 @@ public class Main {
 					case 1:
 						System.out.println(
 								"Você deseja: Cadastrar Pessoa(1), Procurar Pessoa(2), Atualizar dados de Pessoa(3), Deletar Pessoa(4)");
-						String e = in.nextLine();
-						int escolha = Integer.parseInt(e);
+						int escolha = in.nextInt();
+						in.nextLine();
 						switch (escolha) {
 						case 1:
 							System.out.println("Deseja cadastrar Pessoa Física (1) ou Jurídica(2)?");
-							String t = in.nextLine();
-							int tipopessoa = Integer.parseInt(t);
+							int tipopessoa = in.nextInt();
+							in.nextLine();
 							switch (tipopessoa) {
 							case 1:
 								System.out.print("Digite o nome: ");
@@ -72,8 +72,8 @@ public class Main {
 							break;
 						case 3:
 							System.out.print("Gostaria de atualizar Pessoa Física(1) ou Jurídica(2)?");
-							String a = in.nextLine();
-							int atualizar = Integer.parseInt(a);
+							int atualizar = in.nextInt();
+							in.nextLine();
 							switch (atualizar) {
 							case 1:
 								System.out.print("Digite CPF de Pessoa Física já cadastrada: ");
@@ -117,8 +117,8 @@ public class Main {
 					case 2:
 						System.out.println(
 								"Você deseja: Cadastrar Demanda(1), Procurar Demanda(2), Atualizar dados da Demanda(3), Deletar Demanda(4)");
-						e = in.nextLine();
-						escolha = Integer.parseInt(e);
+						escolha = in.nextInt();
+						in.nextLine();
 						switch (escolha) {
 						case 1:
 							System.out.print("Digite CPF ou CNPJ de pessoa já cadastrada para adicionar sua Ação Judicial: ");
@@ -134,15 +134,15 @@ public class Main {
 							break;
 						case 2:
 							System.out.print("Digite o código da Ação Judicial já cadastrada: ");
-							String s = in.nextLine();
-							int codigoprocurar = Integer.parseInt(s);
+							int codigoprocurar = in.nextInt();
+							in.nextLine();
 							Demanda procurada = fachada.procurarDemanda(codigoprocurar);
 							System.out.println("Ação encontrada. A área é " + procurada.getArea() + " e esta no nome de: " + procurada.getPessoa().getNome());
 							break;
 						case 3:
 							System.out.print("Digite o código da Ação Judicial já cadastrada: ");
-							String c = in.nextLine();
-							int codigoatualizar = Integer.parseInt(c);					
+							int codigoatualizar = in.nextInt();						
+							in.nextLine(); 
 							Demanda antiga = fachada.procurarDemanda(codigoatualizar);
 							System.out.print("Digite a nova área do Direito para sua Ação: ");
 							String area1 = in.nextLine();
@@ -154,8 +154,8 @@ public class Main {
 							break;
 						case 4:
 							System.out.println("Digite o código da Ação Judicial já cadastrada:");	
-							c = in.nextLine();
-							int codigodeletar = Integer.parseInt(c);
+							int codigodeletar = in.nextInt();
+							in.nextLine();
 							fachada.deletarDemanda(codigodeletar);
 							System.out.print("Exclusão efetuada com sucesso.");
 						}
@@ -163,13 +163,13 @@ public class Main {
 					case 3:
 						System.out.println(
 								"Você deseja: Cadastrar Reserva(1), Procurar Reserva(2), Atualizar dados da Reserva(3), Deletar Reserva(4)");
-						e = in.nextLine();
 						escolha = in.nextInt();
+						in.nextLine();
 						switch (escolha) {
 						case 1:
 							System.out.print("Digite o código da Ação Judicial já cadastrada: ");
-							String c = in.nextLine();
-							int codigo = Integer.parseInt(c);
+							int codigo = in.nextInt();
+							in.nextLine();
 							Demanda demanda = fachada.procurarDemanda(codigo);
 							System.out.print("Digite um dia útil para agendar sua consulta com a Defensoria (ex: 21/11/2019): ");
 							String data = in.nextLine();
@@ -179,8 +179,7 @@ public class Main {
 							int ano = Integer.parseInt(dividir[2]);
 							System.out.println("O funcionamento da nossa sede ocorre das 9 da manhã as 18 da noite. Cada consulta com a Defensoria tem a duração de uma hora.");
 							System.out.print("Digite uma hora para sua Reserva (ex: 9): ");
-							String h = in.nextLine();
-							int hora = Integer.parseInt(h);
+							int hora = in.nextInt();
 							Reserva reserva = new Reserva(hora, dia, mes, ano, demanda);
 							fachada.cadastrarReserva(reserva);
 							System.out.println("Pronto! Sua reserva foi efetuada com sucesso. Agora é so aguardar o dia do atendimento.");
@@ -189,16 +188,16 @@ public class Main {
 							break;
 						case 2:
 							System.out.print("Digite o código da sua Reserva: ");
-							c = in.nextLine();
-							codigo = Integer.parseInt(c);
+							codigo = in.nextInt();
+							in.nextLine();
 							String res = fachada.procurarReserva(codigo);
 							System.out.println(res);
 							break;
 							
 						case 3:
 							System.out.print("Digite o código da sua Reserva: ");
-							c = in.nextLine();
-							codigo = Integer.parseInt(c);
+							codigo = in.nextInt();
+							in.nextLine();
 							Demanda antiga = fachada.procurarDemanda(codigo);
 							System.out.print("Digite nova data para sua Reserva (ex: 22/12/2019): ");
 							data = in.nextLine();
@@ -207,8 +206,7 @@ public class Main {
 							mes = Integer.parseInt(dividir[1]);
 							ano = Integer.parseInt(dividir[2]);
 							System.out.println("Digite novo horário para sua reserva: ");
-							h = in.nextLine();
-							hora = Integer.parseInt(h);
+							hora = in.nextInt();
 							Reserva atualizar = new Reserva (hora, dia, mes, ano, antiga);
 							fachada.atualizarReserva(codigo, atualizar);
 							String imprimir = fachada.procurarReserva(codigo);
@@ -216,9 +214,9 @@ public class Main {
 							break;
 							
 						case 4:
-							System.out.print("Digite o código da sua Reserva ");
-							c = in.nextLine();
-							codigo = Integer.parseInt(c);
+							System.out.print("Digite o código da sua Reserva: ");
+							codigo = in.nextInt();
+							in.nextLine();
 							fachada.deletarReserva(codigo);
 							System.out.println("Exclusão efetuada com sucesso");
 							break;
