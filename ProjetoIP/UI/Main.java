@@ -124,7 +124,7 @@ public class Main {
 							System.out.print("Digite CPF ou CNPJ de pessoa já cadastrada para adicionar sua Ação Judicial: ");
 							String doc = in.nextLine();
 							Pessoa pessoa = fachada.procurarPessoa(doc);
-							System.out.print("Digite área do Direito em que se enquadra sua Ação (Civil, Família): ");
+							System.out.print("Digite área do Direito em que se enquadra sua Ação (ex: Civil, Família): ");
 							String area = in.nextLine();
 							System.out.print("Digite tipo de causa (ex: usucapião, danos morais): ");
 							String demanda = in.nextLine();
